@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 import './SideNavBar.css'
 // Education// contact// expeiriences // projects // Achivements // blog
@@ -73,7 +72,7 @@ export default class SidenavBar extends Component{
         return(
             <>
                 <ul>
-                    <li><i className="fas fa-bars fa-2x"></i></li>
+                    <li><a href="#"><i className="fas fa-bars fa-2x"></i></a></li>
                     <li><i className="fas fa-graduation-cap fa-2x"></i></li>
                     <li><i className="fas fa-phone-alt fa-2x"></i></li>
                     <li><i className="fas fa-briefcase fa-2x"></i></li>
