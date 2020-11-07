@@ -10,7 +10,7 @@ export default class HeroImage extends Component {
         <>
             <Card
                 hoverable
-                style={{ width: 300, height: 450, margin:"2rem"}}
+                style={{ width: "22rem", height: "31rem", margin:"4rem 0rem"}}
                 cover={<img src={Hero} alt="Picture Unavailable" />}
                 actions={[
                     <LinkedinOutlined key="linkedin" />,

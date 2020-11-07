@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Menu, Drawer} from 'antd'
+import {Menu, Drawer, List} from 'antd'
 import {
     BarsOutlined,
     LeftSquareOutlined,
@@ -17,6 +17,8 @@ import {
     CloseOutlined,
   } from '@ant-design/icons';
 
+import {navData} from '../Database/NavbarData'
+
 import './sidenav.css'
 import { Layout } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
@@ -26,88 +28,59 @@ export default class SideNavBar extends Component{
     constructor(props){
         super(props);
         this.state = {
-            collapsed : true,
-            visible:false,
+            show : false
         }
-        this.toggle = this.toggle.bind(this);
+        
+        this.showDrawer = this.showDrawer.bind(this);
+        this.onClose = this.onClose.bind(this);
     }
-    toggle = () => {
-        this.setState({
-            collapsed: !this.state.collapsed,
-        });
-        console.log(this.state.collapsed)
-    };
     showDrawer = () => {
         this.setState({
-          visible: true,
+          show: true,
         });
-      };
+        console.log("SHOW:", this.state.show)
+    };
     
     onClose = () => {
-    this.setState({
-        visible: false,
-    });
+        this.setState({
+            show: false
+        });
+        console.log("DONT SHOW:", this.state.show)
     }; 
     
       render() {
         return (
             <>
             <Drawer
-                title="MENU"
                 placement="left"
-                closable={false}
+                closable={true}
                 onClose={this.onClose}
-                visible={this.state.visible}
-                getContainer={false}
-                bodyStyle={{padding:"0"}}
-                closeIcon={<CloseOutlined />}
-                style={{ position: 'absolute', padding:'0'}}
-                >
-                <ul className='nav-menu'>
-                    <li><a href='#' className={'nav-link'}><UserOutlined className={'nav-link-icon'}/>SKILLS</a></li>
-                    <li><a href='#' className={'nav-link'}><LeftSquareOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><CheckSquareOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><DownloadOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><ControlOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><CodeOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><PhoneOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><ContainerOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><MediumOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><CrownOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><TeamOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><FileOutlined className={'nav-link-icon'}/></a></li>
-                </ul>
+                visible={this.state.show}
+                
+            >
+                <List
+                    bordered={false}
+                    dataSource={navData}
+                    renderItem={item => (
+                    <List.Item> {item.icon} {item.title}</List.Item>
+                    )}></List>
             </Drawer>
-            <Sider width={this.state.collapsed?60 : 200} trigger={null} style={{ overflow: 'auto', height: '100vh',
+                
+            <Sider width={60} trigger={null} style={{ overflow: 'auto', height: '100vh',
                 position: 'fixed', left: 0, backgroundColor:"#fff"}}>
                 <Menu mode="inline" defaultSelectedKeys={['1']}
                     inlineCollapsed={this.state.collapsed} style={{height: '100vh'}}>
-                    <Menu.Item key="1" icon={<BarsOutlined/>} onClick={()=>{this.toggle();}} title={"MENU"}>
+                    <Menu.Item key="0" icon={<BarsOutlined/>} onClick={this.showDrawer} title={"MENU"}>
                     </Menu.Item>
-                    <Menu.Item key="2" icon={<UserOutlined />}  title={"ABOUT ME"}>
-                        {this.state.collapsed ? null : "ABOUT ME"}
-                    </Menu.Item>
-                    <Menu.Item key="3" icon={<LeftSquareOutlined />}  title={"PROJECTS"}>
-                    {this.state.collapsed ? null : "PROJECTS"}
-                    </Menu.Item>
+                    
+                    {navData.map((item) => {
+                        return(
+                            <Menu.Item key={item.key} icon={item.icon}  title={item.title}></Menu.Item>
+                        )
+                    })}
                 </Menu>
             </Sider>
             </>
         );
       }
 }
-/*<ul className='nav-menu'>
-                    <li><a href='#' className={'nav-link'}></li>
-                    <li><a href='#' className={'nav-link'}><UserOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><LeftSquareOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><ControlOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><CodeOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><PhoneOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><ContainerOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><MediumOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><CrownOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><FileOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><CheckSquareOutlined className={'nav-link-icon'}/></a></li>
-                    <li><a href='#' className={'nav-link'}><TeamOutlined className={'nav-link-icon'}/></a></li>                    
-                    <li><a href='#' className={'nav-link'}><DownloadOutlined className={'nav-link-icon'}/></a></li>
-                </ul> */

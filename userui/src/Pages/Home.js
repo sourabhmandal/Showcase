@@ -43,13 +43,17 @@ export default class Home extends Component {
     render(){
       return(
         <>
+              {this.state.width < 750? <TopNavBar/> : <SideNavBar/>}
+              
               <Row>
-
-                <Col>{this.state.width < 750? <TopNavBar/> : <SideNavBar/>}</Col>
-                <Col offset={this.state.width < 750?0:3} lg={21} sm={21} md={21} style={{display:this.state.width < 750 ? "block":"flex"}}>
-                  <MainText/>
-                  <HeroImage/>
-                </Col>
+                <Row gutter={{ xs: 8, sm: 16, md: 0, lg: 16 }} justify={"space-around"} align={'bottom'}>
+                  <Col lg={18} sm={23} md={23}>
+                    <MainText/>
+                  </Col>
+                  <Col lg={6} sm={23} md={23}>
+                    <HeroImage/>
+                  </Col>
+                </Row>
 
 
 

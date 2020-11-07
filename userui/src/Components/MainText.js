@@ -7,7 +7,7 @@ export default class MainText extends Component{
     render(){
         return(
             <>
-            <div className={"discription"} style={{padding:"2rem 2rem"}} >
+            <div className={"discription"} style={{paddingLeft:"5rem"}} >
               <Divider orientation="left">Hi, My name is</Divider>
               <Typography.Title style={{fontSize:"7vw",margin:"0"}}>Sourabh Mandal</Typography.Title>
               <Typography.Title  style={{ fontSize:"3vw"}} level={2}>I am an Open Source Contributor</Typography.Title>
