@@ -5,7 +5,7 @@ import { Tag } from 'antd';
 export default class Hobbies extends Component{
     render(){
         return(
-            <>
+            <div style={{padding:"2rem"}}>
                 <Tag style={{margin:'0.3rem'}}color="#f50">#Open Source</Tag>
                 <Tag style={{margin:'0.3rem'}}color="#2db7f5">#BasketBall</Tag>
                 <Tag style={{margin:'0.3rem'}}color="#108ee9">#Entreprenuer</Tag>
@@ -22,7 +22,7 @@ export default class Hobbies extends Component{
                 <Tag style={{margin:'0.3rem'}}color="#87d068">#Startup</Tag>
                 <Tag style={{margin:'0.3rem'}}color="#108ee9">#Fintech</Tag>
 
-            </>            
+            </div>            
         )
     }
 }

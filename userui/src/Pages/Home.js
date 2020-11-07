@@ -44,33 +44,31 @@ export default class Home extends Component {
       return(
         <>
               {this.state.width < 750? <TopNavBar/> : <SideNavBar/>}
-              
-              <Row>
-                <Row gutter={{ xs: 8, sm: 16, md: 0, lg: 16 }} justify={"space-around"} align={'bottom'}>
-                  <Col lg={18} sm={23} md={23}>
+            
+                <Row gutter={{ xs: 8, sm: 16, md: 0, lg: 16 }} justify={"space-around"} align={'middle'}>
+                  <Col lg={18} sm={23} md={16} xs={23}>
                     <MainText/>
                   </Col>
-                  <Col lg={6} sm={23} md={23}>
+                  <Col lg={6} sm={23} md={6} xs={23}>
                     <HeroImage/>
                   </Col>
                 </Row>
 
 
-
-
                 
-                <Col  offset={this.state.width < 750?0:3} lg={20} sm={24} md={20}>
-                  <Row>
-                    <Col lg={18} sm={18} md={18}>
-                      <Divider><strong>Education</strong></Divider>
-                      <Education/>
-                    </Col>
-                    <Col lg={6} sm={6} md={6}>
-                      <Divider><strong>Hobbies</strong></Divider>
-                      <Hobbies/>
-                    </Col>
-                  </Row>
-                </Col>
+                <Row>
+                  <Col offset={this.state.width < 750 ? 0:1} lg={15} xs={23} sm={23} md={15}>
+                    <Divider><strong>Education</strong></Divider>
+                    <Education/>
+                  </Col>
+                  <Col lg={8} sm={23} xs={23} md={8}>
+                    <Divider><strong>Hobbies</strong></Divider>
+                    <Hobbies/>
+                  </Col>
+                </Row>
+
+
+
                 <Col  offset={this.state.width < 750?0:2} lg={21} sm={21} md={21}>
                   <Divider style={{fontSize:"2rem"}}><strong>PROJECTS</strong></Divider>
                 </Col>
@@ -118,15 +116,12 @@ export default class Home extends Component {
 
                 
 
-                <Col  offset={this.state.width < 750?0:2} lg={21} sm={21} md={21}>
+                <Col  offset={this.state.width < 750?0:2} lg={21} xs={24} sm={21} md={21}>
                   <Divider style={{fontSize:"2rem"}}><strong>COURSES</strong></Divider>
                 </Col>
-                <Col  offset={this.state.width < 750?0:3} lg={20} sm={24} md={20}>
+                <Col  offset={this.state.width < 750?0:3} lg={20} xs={24} sm={24} md={20}>
                   <Courses />
                 </Col>
-
-
-              </Row>
               
 
         </>

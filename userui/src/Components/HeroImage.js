@@ -1,16 +1,43 @@
 import React, { Component } from 'react'
-import {Card } from 'antd';
+import {Card, Avatar } from 'antd';
 import Hero from '../Assets/sourabh.jpg';
-import { GithubOutlined, MediumOutlined, LinkedinOutlined } from '@ant-design/icons';
+import { GithubOutlined, MediumOutlined, LinkedinOutlined,UserOutlined } from '@ant-design/icons';
 
 const { Meta } = Card;
 export default class HeroImage extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      width:0,
+      height:0
+    }
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  }
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+  
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+  
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+  }
   render(){
     return (
         <>
-            <Card
+          <Avatar shape="circle" size={{xl:300, lg:300, md:200, sm:300, xs:300}} style={{margin:this.state.width < 750?"2rem":"" }} src={Hero} />
+            
+        </>
+    );
+  }
+}
+/*
+<Card
                 hoverable
-                style={{ width: "22rem", height: "31rem", margin:"4rem 0rem"}}
+                style={{ width: "22rem", height: "32rem", margin:"2rem " }}
                 cover={<img src={Hero} alt="Picture Unavailable" />}
                 actions={[
                     <LinkedinOutlined key="linkedin" />,
@@ -20,8 +47,4 @@ export default class HeroImage extends Component {
             >
                 <Meta title="Army Institute of Technology" description="Alandi rd, Dighi Hils, Pune" />
             </Card>
-            
-        </>
-    );
-  }
-}
+*/

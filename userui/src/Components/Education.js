@@ -5,7 +5,7 @@ export default class Education extends Component{
     render(){
         return(
             <>
-                <Timeline mode={'left'} style={{padding:"1rem"}}>
+                <Timeline mode={'left'} style={{padding:"1rem 2rem "}}>
                     <Timeline.Item>
                     <Card title="B.Tech Computer Engineering" size="small" style={{ width: "100%" }}>
                         <p>Army Institute of Technology</p>
