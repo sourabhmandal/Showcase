@@ -34,8 +34,8 @@ export default class SideNavBar extends Component{
     toggle = () => {
         this.setState({
             collapsed: !this.state.collapsed,
-            visible: !this.state.visible,
         });
+        console.log(this.state.collapsed)
     };
     showDrawer = () => {
         this.setState({
@@ -78,16 +78,26 @@ export default class SideNavBar extends Component{
                     <li><a href='#' className={'nav-link'}><FileOutlined className={'nav-link-icon'}/></a></li>
                 </ul>
             </Drawer>
-            <Sider width={50} trigger={null} style={{
-                overflow: 'auto',
-                height: '100vh',
-                position: 'fixed',
-                left: 0,
-                backgroundColor:"grey"
-              }}>
-                  
-                <ul className='nav-menu'>
-                    <li><a href='#' className={'nav-link'}><BarsOutlined className={'nav-link-icon'}  onClick={()=>{this.toggle(); this.showDrawer()} }/></a></li>
+            <Sider width={this.state.collapsed?60 : 200} trigger={null} style={{ overflow: 'auto', height: '100vh',
+                position: 'fixed', left: 0, backgroundColor:"#fff"}}>
+                <Menu mode="inline" defaultSelectedKeys={['1']}
+                    inlineCollapsed={this.state.collapsed} style={{height: '100vh'}}>
+                    <Menu.Item key="1" icon={<BarsOutlined/>} onClick={()=>{this.toggle();}} title={"MENU"}>
+                    </Menu.Item>
+                    <Menu.Item key="2" icon={<UserOutlined />}  title={"ABOUT ME"}>
+                        {this.state.collapsed ? null : "ABOUT ME"}
+                    </Menu.Item>
+                    <Menu.Item key="3" icon={<LeftSquareOutlined />}  title={"PROJECTS"}>
+                    {this.state.collapsed ? null : "PROJECTS"}
+                    </Menu.Item>
+                </Menu>
+            </Sider>
+            </>
+        );
+      }
+}
+/*<ul className='nav-menu'>
+                    <li><a href='#' className={'nav-link'}></li>
                     <li><a href='#' className={'nav-link'}><UserOutlined className={'nav-link-icon'}/></a></li>
                     <li><a href='#' className={'nav-link'}><LeftSquareOutlined className={'nav-link-icon'}/></a></li>
                     <li><a href='#' className={'nav-link'}><ControlOutlined className={'nav-link-icon'}/></a></li>
@@ -100,9 +110,4 @@ export default class SideNavBar extends Component{
                     <li><a href='#' className={'nav-link'}><CheckSquareOutlined className={'nav-link-icon'}/></a></li>
                     <li><a href='#' className={'nav-link'}><TeamOutlined className={'nav-link-icon'}/></a></li>                    
                     <li><a href='#' className={'nav-link'}><DownloadOutlined className={'nav-link-icon'}/></a></li>
-                </ul>
-            </Sider>
-            </>
-        );
-      }
-}
+                </ul> */

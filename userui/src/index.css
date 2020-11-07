@@ -3,7 +3,7 @@ body {
   font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(15, 26, 46);
+  background-color: rgb(255, 255, 255);
   overflow-x: hidden;
 }
 
