@@ -45,7 +45,7 @@ export default class Home extends Component {
         <>
               {this.state.width < 750? <TopNavBar/> : <SideNavBar/>}
             
-                <Row gutter={{ xs: 8, sm: 16, md: 0, lg: 16 }} justify={"space-around"} align={'middle'}>
+                <Row gutter={{ xs: 8, sm: 16, md: 0, lg: 16 }} style={{backgroundColor:"#fff", paddingBottom:"2rem"}}  justify={"space-around"} align={'middle'}>
                   <Col lg={18} sm={23} md={16} xs={23}>
                     <MainText/>
                   </Col>

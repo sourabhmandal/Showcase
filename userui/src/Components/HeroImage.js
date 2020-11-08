@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Card, Avatar } from 'antd';
-import Hero from '../Assets/sourabh.jpg';
+import Hero from '../Assets/sour.png';
 import { GithubOutlined, MediumOutlined, LinkedinOutlined,UserOutlined } from '@ant-design/icons';
 
 const { Meta } = Card;
@@ -28,7 +28,7 @@ export default class HeroImage extends Component {
   render(){
     return (
         <>
-          <Avatar shape="circle" size={{xl:300, lg:300, md:200, sm:300, xs:300}} style={{margin:this.state.width < 750?"2rem":"" }} src={Hero} />
+          <Avatar shape="circle" size={{xl:300, lg:300, md:200, sm:300, xs:300}} style={{margin:this.state.width < 750?"2rem":"", boxShadow:  "27px 27px 53px #c3cfd9, -27px -27px 53px #ffffff" }} src={Hero} />
             
         </>
     );

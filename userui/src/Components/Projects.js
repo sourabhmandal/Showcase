@@ -9,23 +9,16 @@ export default class Projects extends Component{
                 <Col span={8}>
                     <Card
                         style={{ width: 300 }}
-                        cover={
-                        <img
-                            alt="example"
-                            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                        />
-                        }
+                        bodyStyle={{background:"linear-gradient(145deg, #cedbe6, #f5ffff)", boxShadow:  "27px 27px 53px #c3cfd9, -27px -27px 53px #ffffff"}}
                         actions={[
                             <StarFilled style={{color:"gold"}} />,
                             <GithubOutlined key="github" />,
                             <MediumOutlined key="medium" />,
                         ]}
                     >
-                        <Statistic style={{paddingBottom:"1rem"}} suffix="Stars" value={1} prefix={<StarFilled style={{color:"gold"}}/>} />
                         <Meta
-                        avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
                         title="Card title"
-                        description="This is the description"
+                        description="This is the description This is the description This is the description This is the description This is the description This is the description This is the description This is the description"
                         />
                     </Card>
                 </Col>
