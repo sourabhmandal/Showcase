@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import {Card, Row, Col, Avatar, Button, Drawer, Divider} from 'antd'
 import {RightSquareOutlined} from '@ant-design/icons'
+import {blogData} from '../Database/BlogData'
+
+
 const {Meta} = Card;
 
 
@@ -126,23 +129,20 @@ export default class Blog extends Component{
 
 
 
-               <Row gutter={16}>
-                    <Col span={12}>
-                        <Card title="Blog 1">
-                        <Meta
-                        avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                        description="This is the description"
-                        />
-                        </Card>
-                    </Col>
-                    <Col span={12}>
-                        <Card title="Blog 2">
+               <Row gutter={[{ xs: 16, sm: 16, md: 64, lg: 64 }, { xs: 16, sm: 16, md: 64, lg: 64 }]} style={{backgroundColor:"orange"}}>
+                   {blogData.map( (blog)=>{
+                       return(
+                        <Col span={12} style={{backgroundColor:"red"}}>
+                            <Card title={blog.title} width={"100%"}>
                             <Meta
                             avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                            description="This is the description"
+                            description={blog.Description}
                             />
-                        </Card>
-                    </Col>
+                            </Card>
+                        </Col>
+                       )
+                   } )}
+                    
                 </Row>
                 <Row justify={"center"} style={{padding:"1rem"}}>
                     <Col>

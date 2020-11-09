@@ -9,7 +9,7 @@ export default class MainText extends Component{
             <div className={"discription"} style={{paddingLeft:"13%"}} >
                 <Divider orientation="left">Hi, My name is</Divider>
                 <Typography.Title className="h1 rainbow-text">Sourabh Mandal</Typography.Title>
-                <Typography.Title  style={{ fontSize:"3vw"}} level={2}>I am an <u>Open Source Contributor</u></Typography.Title>
+                <Typography.Title  style={{ fontSize:"3vw"}} level={2}>I am an <b style={{backgroundColor:"purple", color:"whitesmoke", padding:"0.1rem 1rem"}}>Open Source Contributor</b></Typography.Title>
                 <Typography.Paragraph strong={true}>I'm a software engineering student based in Pune, IN
                 <br/> good with building solutions, fast prototyping and everything in between.
                 <br/>Fuel with passion to give back to society</Typography.Paragraph>

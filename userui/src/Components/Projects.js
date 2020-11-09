@@ -1,50 +1,56 @@
 import React, { Component } from 'react'
 import { Card, Col, Row, Tag, Avatar, Statistic } from 'antd';
 import { StarOutlined, GithubOutlined, MediumOutlined, StarFilled } from "@ant-design/icons";
+import {projectData} from '../Database/ProjectsData'
 const {Meta} = Card;
 export default class Projects extends Component{
+    constructor(props){
+        super(props)
+        this.state = {
+          width:0,
+          height:0
+        }
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+      }
+    componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
+    }
+    
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+    
+    updateWindowDimensions() {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    }
+      
     render(){
         return(
-            <Row gutter={16}>
-                <Col span={8}>
-                    <Card
-                        style={{ width: 300 }}
-                        bodyStyle={{background:"linear-gradient(145deg, #cedbe6, #f5ffff)", boxShadow:  "27px 27px 53px #c3cfd9, -27px -27px 53px #ffffff"}}
-                        actions={[
-                            <StarFilled style={{color:"gold"}} />,
-                            <GithubOutlined key="github" />,
-                            <MediumOutlined key="medium" />,
-                        ]}
-                    >
-                        <Meta
-                        title="Card title"
-                        description="This is the description This is the description This is the description This is the description This is the description This is the description This is the description This is the description"
-                        />
-                    </Card>
-                </Col>
-                <Col span={8}>
-                    <Card
-                        style={{ width: 300 }}
-                        cover={
-                        <img
-                            alt="example"
-                            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                        />
-                        }
-                        actions={[
-                            <StarOutlined />,
-                            <GithubOutlined key="github" />,
-                            <MediumOutlined key="medium" />,
-                        ]}
-                    >
-                        <Meta
-                        avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                        title="Card title"
-                        description="This is the description"
-                        />
-                    </Card>
-                </Col>
-                </Row>
+            <Row gutter={[{ xs: 16, sm: 16, md: 64, lg: 64 }, { xs: 16, sm: 16, md: 64, lg: 64 }]} style={this.state.width < 768 ? {paddingLeft: "0rem", padding:"2rem"} : {paddingLeft:"7rem"} }>
+            {projectData.map((item) => {
+                return(
+                    <Col xs={24} sm={24} md={10} lg={7}>
+                        <Card
+                            style={{ width: "100%",  color:"whitesmoke"}}
+                            bordered={false}
+                            key={item.key}
+                            bodyStyle={{background:"linear-gradient(145deg, #F7971E, #FFD200)", boxShadow:  "27px 27px 53px #c3cfd9, -27px -27px 53px #ffffff"}}
+                            actions={[
+                                <StarFilled style={{color:"gold"}} />,
+                                <GithubOutlined key="github" />,
+                                <MediumOutlined key="medium" />,
+                            ]}>
+                            <Meta
+                            title={item.title}
+                            description={item.description}
+                            />
+                        </Card>
+                    </Col>
+                )
+            })}
+            </Row>
+
         )
     }
 }
