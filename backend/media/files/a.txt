@@ -1,0 +1,14 @@
+APT(advanced persistent treats)
+Trojans
+Botnets
+Botnets
+Rootkits
+Ransomwares
+APTs
+Zero days (0 days)
+Command and Control (C2)
+backdoors
+reverse shells
+packers that encrypt portions of executable code
+static analysis
+dynamic analysis

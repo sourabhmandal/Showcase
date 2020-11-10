@@ -10,7 +10,6 @@ from .serializer import AchivementSerializer
 class AchiveView(APIView):
     def get(self, request, *args, **kwargs):
         achivement_list = Achivements.objects.all()
-        print(achivement_list)
         serializer = AchivementSerializer(achivement_list, many=True)
         return Response(serializer.data)
 
