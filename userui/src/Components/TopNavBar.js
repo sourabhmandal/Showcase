@@ -16,14 +16,12 @@ export default class TopNavBar extends Component{
         this.setState({
           show: true,
         });
-        console.log("SHOW:", this.state.show)
     };
     
     onClose = () => {
         this.setState({
             show: false
         });
-        console.log("DONT SHOW:", this.state.show)
     }; 
     render(){
         return(
