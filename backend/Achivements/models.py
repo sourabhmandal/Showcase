@@ -9,7 +9,7 @@ class Achivements(models.Model):
     to_date = models.DateField(verbose_name="To Date")
 
     def __str__(self):
-        return self.position + ' in ' + self.name
+        return str(self.position) + ' in ' + self.name
 
     class Meta:
         verbose_name_plural = 'Achivements'

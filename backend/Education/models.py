@@ -8,10 +8,10 @@ class Education(models.Model):
     from_date = models.DateField(verbose_name="From Date")
     to_date = models.DateField(verbose_name="To Date")
     location = models.CharField(
-        verbose_name="Loacation", max_length=500)
+        verbose_name="Location", max_length=500)
 
     def __str__(self):
         return self.degree + ' @ ' + self.college
 
     class Meta:
-        verbose_name_plural = 'Achivements'
+        verbose_name_plural = 'Education'

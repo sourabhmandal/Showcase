@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'Experience.apps.ExperienceConfig',
     'Hobbies.apps.HobbiesConfig',
     'Project.apps.ProjectConfig',
-    'Skill.apps.SkillConfig'
+    'Skill.apps.SkillConfig',
+    'rest_framework',
 
 ]
 
@@ -60,6 +61,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# REST_FRAMEWORK = {
+#     # Use Django's standard `django.contrib.auth` permissions,
+#     # or allow read-only access for unauthenticated users.
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+#     ]
+# }
 
 ROOT_URLCONF = 'backend.urls'
 
