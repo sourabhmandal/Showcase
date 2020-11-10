@@ -31,7 +31,7 @@ from Skill.views import SkillsView
 
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
-    path('admin/', admin.site.urls),
+    path('/', admin.site.urls),
     path('achivement/', AchiveView.as_view(), name='achivement'),
     path('blog/', BlogView.as_view(), name='blog'),
     path('courses/', CoursesView.as_view(), name='courses'),
