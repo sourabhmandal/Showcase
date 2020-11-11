@@ -36,7 +36,7 @@ class NavTabs(models.Model):
     nav_name = models.CharField(
         verbose_name="Nav Display Name", max_length=500)
     nav_link = models.CharField(verbose_name="Nav Link", max_length=500)
-    nav_icon = models.CharField(verbose_name="Icon Tag", max_length=500)
+    nav_pos = models.IntegerField(unique=True, null=True)
 
     def __str__(self):
         return self.nav_name

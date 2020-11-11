@@ -1,98 +1,74 @@
 import React, { Component } from 'react';
-import {Menu, Drawer, List} from 'antd'
+import { Affix, Menu, Layout} from 'antd';
 import axios from 'axios'
+import {navData} from '../Database/NavbarData'
 import {
     BarsOutlined,
-    LeftSquareOutlined,
-    UserOutlined,
-    CheckSquareOutlined,
     DownloadOutlined,
-    ControlOutlined,
-    CodeOutlined,
     PhoneOutlined,
-    ContainerOutlined,
-    MediumOutlined,
-    CrownOutlined,
-    TeamOutlined,
-    FileOutlined,
-    CloseOutlined,
   } from '@ant-design/icons';
-
-import {navData} from '../Database/NavbarData'
-
 import './sidenav.css'
-import { Layout } from 'antd';
+
+
 const {Sider} = Layout;
+const { SubMenu } = Menu;
+
 
 export default class SideNavBar extends Component{
     constructor(props){
         super(props);
         this.state = {
-            show : false,
+            current : "SubMenu",
             isLoaded : false,
             navTabs: []
         }
         
-        this.showDrawer = this.showDrawer.bind(this);
-        this.onClose = this.onClose.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount(){
-        fetch('http://127.0.0.1:8000/navtabs/')
+        axios.get('http://sourabhmandal.pythonanywhere.com/navtabs/')
         .then(json =>{
-            console.log("FETCH DATA" , json.data)
             this.setState({
                 isLoaded : true,
-                navTabs : json,
+                navTabs : json.data,
             })
-        })
-        
+            console.log("FETCH DATA",this.state.navTabs)
+        })   
     }
-
-    showDrawer = () => {
-        this.setState({
-          show: true,
-        });
+    handleClick = e => {
+        console.log('click ', e);
+        this.setState({ current: e.key });
     };
     
-    onClose = () => {
-        this.setState({
-            show: false
-        });
-    }; 
     
       render() {
         return (
             <>
-            <Drawer
-                placement="left"
-                closable={true}
-                onClose={this.onClose}
-                visible={this.state.show}
+            <Affix offsetTop={0}>
+            <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal">
+                <SubMenu key="SubMenu" icon={<BarsOutlined />} title="MENU">
+                    <Menu.ItemGroup>
+                        {this.state.navTabs.map( (item)=>{
+                            return(
+                                <Menu.Item key={item.id}>
+                                    <a href={item.nav_link}>{item.nav_name}</a>
+                                </Menu.Item>
+                            )
+                        })}
+                    </Menu.ItemGroup>
+                </SubMenu>
+                <Menu.Item key="app" icon={<PhoneOutlined />}>
+                    Contact Me
+                </Menu.Item>
                 
-            >
-                <List
-                    bordered={false}
-                    dataSource={this.state.navTabs}
-                    renderItem={item => (
-                    <List.Item> {item.icon} {item.title}</List.Item>
-                    )}></List>
-            </Drawer>
-                
-            <Sider width={60} trigger={null} style={{ overflow: 'auto', height: '100vh',
-                position: 'fixed', left: 0, backgroundColor:"#fff"}}>
-                <Menu mode="inline" defaultSelectedKeys={['1']}
-                    inlineCollapsed={this.state.collapsed} style={{height: '100vh'}}>
-                    <Menu.Item key="0" icon={<BarsOutlined/>} onClick={this.showDrawer} title={"MENU"}>
-                    </Menu.Item>
-                    
-                    {this.state.navTabs.map((item) => {
-                        return(
-                            <Menu.Item key={item.id} icon={item.icon}  title={item.title}></Menu.Item>
-                        )
-                    })}
-                </Menu>
-            </Sider>
+                <Menu.Item key="alipay" icon={<DownloadOutlined />}>
+                    <a href="#" rel="noopener noreferrer">
+                        Download Resume
+                    </a>
+                </Menu.Item>
+            </Menu>
+            </Affix>
             </>
         );
       }
