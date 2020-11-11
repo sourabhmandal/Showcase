@@ -39,7 +39,7 @@ class NavTabs(models.Model):
     nav_pos = models.IntegerField(unique=True, null=True)
 
     def __str__(self):
-        return self.nav_name
+        return str(self.nav_pos)+ "-" + self.nav_name
 
     class Meta:
         verbose_name_plural = 'Navigation Links'

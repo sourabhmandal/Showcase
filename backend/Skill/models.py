@@ -3,6 +3,7 @@ from django.db import models
 
 class Skills(models.Model):
     skill = models.CharField(verbose_name="Skill Name", max_length=100)
+    skill_group = models.CharField(verbose_name="Skill Group", max_length=100)
     percent = models.IntegerField(verbose_name="Percent")
 
     def __str__(self):

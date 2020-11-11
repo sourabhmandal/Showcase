@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-from os import path
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +25,9 @@ SECRET_KEY = 'v1x!l5vabs1rshd!n(42bn_^k$=&^+z701@b76yg@noyo499yl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -50,10 +51,12 @@ INSTALLED_APPS = [
     'Project.apps.ProjectConfig',
     'Skill.apps.SkillConfig',
     'rest_framework',
+    'corsheaders',
 
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -141,11 +144,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'http://sourabhmandal.pythonanywhere.com/static/'
+STATIC_ROOT='/home/sourabhmandal/Showcase/backend/static'
+STARTICFILES_DIRS = ['/home/sourabhmandal/Showcase/backend/static']
 
-STARTICFILES_DIRS = [
-    path.join(BASE_DIR, 'backend/static')
-]
-
-MEDIA_ROOT = path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_ROOT = '/home/sourabhmandal/Showcase/backend/media'
+MEDIA_URL = 'http://sourabhmandal.pythonanywhere.com/media/'

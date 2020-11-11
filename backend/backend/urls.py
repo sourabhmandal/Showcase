@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.conf.urls import include, url
+from django.conf.urls import url
 from Achivements.views import AchiveView
 from Blog.views import BlogView
 from Courses.views import CoursesView
@@ -31,7 +31,7 @@ from Skill.views import SkillsView
 
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
-    path('', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('achivement/', AchiveView.as_view(), name='achivement'),
     path('blog/', BlogView.as_view(), name='blog'),
     path('courses/', CoursesView.as_view(), name='courses'),
