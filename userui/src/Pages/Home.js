@@ -42,11 +42,11 @@ export default class Home extends Component {
       return(
         <>
           {this.state.width < 750? <TopNavBar/> : <SideNavBar/>}
-          <Row gutter={{ xs: 8, sm: 16, md: 0, lg: 16 }} style={{backgroundColor:"#fff", paddingBottom:"2rem"}}  justify={"space-around"} align={'middle'}>
-            <Col lg={18} sm={23} md={16} xs={23}>
+          <Row gutter={{ xs: 8, sm: 16, md: 0, lg: 16 }} justify="center" style={{backgroundColor:"#fff", paddingBottom:"2rem"}}  justify={"space-around"} align={'middle'}>
+            <Col lg={16} sm={23} md={16} xs={23}>
               <MainText/>
             </Col>
-            <Col lg={6} sm={23} md={6} xs={23}>
+            <Col lg={8} sm={23} md={6} xs={23}>
               <HeroImage/>
             </Col>
           </Row>
@@ -73,7 +73,7 @@ export default class Home extends Component {
           <Col  offset={this.state.width < 768?0:2} lg={21} sm={24} md={21}>
             <Divider style={{fontSize:"2rem"}}><strong>WORK EXPERIENCE</strong></Divider>
           </Col>
-          <Col  offset={this.state.width < 768?0:3} lg={21} sm={24} md={21}>
+          <Col offset={this.state.width < 900 ? 1 : 5} lg={20} xl={13} sm={24} md={22}>
             <Experience/>
           </Col>
 
@@ -92,7 +92,7 @@ export default class Home extends Component {
           <Col  offset={this.state.width < 750?0:2} lg={21} sm={21} md={21}>
             <Divider style={{fontSize:"2rem"}}><strong>BLOG</strong></Divider>
           </Col>
-          <Col  offset={this.state.width < 750?0:3} lg={20} sm={24} md={20}>
+          <Col  offset={this.state.width < 1100?0:1} lg={20} sm={24} md={20}>
             <Blog />
           </Col>
 
@@ -101,16 +101,16 @@ export default class Home extends Component {
           <Col  offset={this.state.width < 750?0:2} lg={21} sm={21} md={21}>
             <Divider style={{fontSize:"2rem"}}><strong>ACHIVEMENTS</strong></Divider>
           </Col>
-          <Col  offset={this.state.width < 750?0:3} lg={20} sm={24} md={20}>
+          <Col  offset={this.state.width < 750?0:5} xl={22} lg={22} sm={24} md={20}>
             <Achivements />
           </Col>
 
           
 
-          <Col  offset={this.state.width < 750?0:2} lg={21} xs={24} sm={21} md={21}>
+          <Col  offset={this.state.width < 750?0:2} xl={20} lg={21} xs={24} sm={21} md={21}>
             <Divider style={{fontSize:"2rem"}}><strong>COURSES</strong></Divider>
           </Col>
-          <Col  offset={this.state.width < 750?0:3} lg={20} xs={24} sm={24} md={20}>
+          <Col  offset={this.state.width < 750?0:5} xl={22} lg={22} xs={24} sm={24} md={20}>
             <Courses />
           </Col>
               

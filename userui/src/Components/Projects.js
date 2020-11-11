@@ -1,20 +1,33 @@
 import React, { Component } from 'react'
-import { Card, Col, Row, Tag, Avatar, Statistic } from 'antd';
-import { StarOutlined, GithubOutlined, MediumOutlined, StarFilled } from "@ant-design/icons";
-import {projectData} from '../Database/ProjectsData'
+import { Card, Col, Row } from 'antd';
+import { PlaySquareTwoTone, GithubOutlined, MediumOutlined } from "@ant-design/icons";
+import axios from 'axios'
 const {Meta} = Card;
+
+
 export default class Projects extends Component{
     constructor(props){
         super(props)
         this.state = {
           width:0,
-          height:0
+          height:0,
+          projectData: [],
+          isLoaded: false,
         }
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-      }
-    componentDidMount() {
+    }
+    componentDidMount(){
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
+        axios.get('http://sourabhmandal.pythonanywhere.com/projects/')
+        .then(json =>{
+            console.log(json)
+            this.setState({
+                isLoaded : true,
+                projectData : json.data,
+            })
+            console.log("PROJECT DATA",this.state.projectData)
+        })
     }
     
     componentWillUnmount() {
@@ -24,26 +37,28 @@ export default class Projects extends Component{
     updateWindowDimensions() {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
+
+
       
     render(){
         return(
             <Row gutter={[{ xs: 16, sm: 16, md: 64, lg: 64 }, { xs: 16, sm: 16, md: 64, lg: 64 }]} style={this.state.width < 768 ? {paddingLeft: "0rem", padding:"2rem"} : {paddingLeft:"7rem"} }>
-            {projectData.map((item) => {
+            {this.state.projectData.map((item) => {
                 return(
                     <Col xs={24} sm={24} md={10} lg={7}>
                         <Card
                             style={{ width: "100%",  color:"whitesmoke"}}
                             bordered={false}
-                            key={item.key}
+                            key={item.id}
                             bodyStyle={{background:"linear-gradient(145deg, #F7971E, #FFD200)", boxShadow:  "27px 27px 53px #c3cfd9, -27px -27px 53px #ffffff"}}
                             actions={[
-                                <StarFilled style={{color:"gold"}} />,
-                                <GithubOutlined key="github" />,
-                                <MediumOutlined key="medium" />,
+                                <a href={"#"}><PlaySquareTwoTone twoToneColor="#52c41a" /></a>,
+                                <a href={item.project_link}><GithubOutlined key="github" /></a>,
+                                <a href={item.project_blog}><MediumOutlined key="medium" /></a>,
                             ]}>
                             <Meta
-                            title={item.title}
-                            description={item.description}
+                                title={item.title}
+                                description={item.description}
                             />
                         </Card>
                     </Col>

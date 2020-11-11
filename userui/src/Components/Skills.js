@@ -1,29 +1,53 @@
 import React, { Component } from 'react';
-import {Progress, Descriptions} from 'antd'
-import {skillsData} from '../Database/skillsData'
+import {Progress, Descriptions} from 'antd';
+import axios from 'axios';
 export default class Skills extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            isLoaded : false,
+            skillsData: [],
+            skillsType: ['Programming Language', 'Libraries / Framework', 'Data Storage / Handling',
+                        'Soft Skills', 'Tools'],
+            skillsDict: [],
+        }
+        
+    }
+    componentDidMount(){
+        axios.get('http://sourabhmandal.pythonanywhere.com/skills/')
+        .then(json =>{
+            this.setState({
+                isLoaded : true,
+                skillsData : json.data,
+            })
+            console.log("skills DATA",this.state.skillsData)
+        })
+        
+    }
     render(){
         return(
             <>
-                {skillsData.map( (skilltype) =>{
+            
+                {this.state.skillsType.map( (skillsType) =>{
                     return(
-                        <Descriptions bordered title={skilltype.title} style={{padding:"2rem"}}
-                            column={{ xxl: 2, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }} size="small" layout="vertical">
-                            {skilltype.item.map( (items) =>{
+                        <Descriptions bordered title={skillsType} style={{padding:"2rem"}}
+                            column={{ xxl: 2, xl: 2, lg: 2, md: 1, sm: 1, xs: 1 }} size="small" layout="vertical">
+                            {this.state.skillsData.map((items) => { 
                                 return(
-                                    <Descriptions.Item label={items.label} span={1}>
-                                        <Progress strokeColor={{
-                                            '0%': '#F7971E',
-                                            '100%': '#87d068',
-                                        }} percent={items.percent} status="active" />
-                                    </Descriptions.Item>
+                                    //console.log( skillsType, "===", items.skill, ":", skillsType === items.skill)
+                                    skillsType === items.skill_group ?
+                                        <Descriptions.Item label={items.skill} span={1}>
+                                            <Progress strokeColor={{
+                                                '0%': '#F7971E',
+                                                '100%': '#87d068',
+                                            }} percent={items.percent} status="active" />
+                                        </Descriptions.Item> : ""
                                 )
                             })}
-                            
-                    
                         </Descriptions>
                     )
                 })}
+            
             </>
         )
     }

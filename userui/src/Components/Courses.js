@@ -1,24 +1,70 @@
 import React, { Component } from 'react'
-import { List } from 'antd';
-import { FileDoneOutlined } from "@ant-design/icons";
+import { List, Card} from 'antd';
+import { FileAddTwoTone } from "@ant-design/icons";
+import axios from 'axios';
+const {Meta} = Card;
 
-const data = [
-    'Racing car sprays burning fuel into crowd.',
-    'Japanese princess to wed commoner.',
-    'Australian walks 100km after outback crash.',
-    'Man charged over missing wedding girl.',
-    'Los Angeles battles huge wildfires.',
-  ];
 export default class Courses extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            width:0,
+            height:0,
+            isLoaded : false,
+            courses: []
+        }
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    }
+
+    componentDidMount(){
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
+        axios.get('http://sourabhmandal.pythonanywhere.com/courses/')
+        .then(json =>{
+            this.setState({
+                isLoaded : true,
+                courses : json.data,
+            })
+            console.log("COURSE DATA : ", this.state.courses)
+        })
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+        
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+    
+    updateWindowDimensions() {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    }
+
     render(){
         return(
             <>
                 <List
                     size="large"
                     bordered={false}
-                    dataSource={data}
-                    renderItem={item => <List.Item><FileDoneOutlined style={{paddingRight:"1rem", fontSize:"1.2rem"}}/>{item}</List.Item>}
-                    />
+                    dataSource={this.state.courses}
+                    renderItem={item => 
+                    <List.Item>
+                        
+                        
+                        <Card
+                            style={{ width: this.state.width < 900 ? "100%" : "50%" }}
+                            
+                            actions={[
+                                "Issueing Authority : " + "Coursera",
+                                item.from_date
+                            ]}>
+                            <Meta
+                            avatar={<FileAddTwoTone twoToneColor="#FFD700" style={{paddingRight:"1rem", fontSize:"1.2rem"}}/>}
+                            title={item.name}
+                            description={item.discription}
+                            />
+                        </Card>
+                    </List.Item>}
+                />
             </>
         )
     }

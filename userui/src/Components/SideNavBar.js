@@ -7,7 +7,6 @@ import {
     DownloadOutlined,
     PhoneOutlined,
   } from '@ant-design/icons';
-import './sidenav.css'
 
 
 const {Sider} = Layout;
@@ -33,11 +32,10 @@ export default class SideNavBar extends Component{
                 isLoaded : true,
                 navTabs : json.data,
             })
-            console.log("FETCH DATA",this.state.navTabs)
+            console.log("MENU NAV DATA",this.state.navTabs)
         })   
     }
     handleClick = e => {
-        console.log('click ', e);
         this.setState({ current: e.key });
     };
     
