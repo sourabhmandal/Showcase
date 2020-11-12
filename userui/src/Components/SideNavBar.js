@@ -21,7 +21,8 @@ export default class SideNavBar extends Component{
         this.state = {
             current : "SubMenu",
             isLoaded : false,
-            navTabs: []
+            navTabs: [],
+            links: []
         }
         
         this.handleClick = this.handleClick.bind(this);
@@ -36,6 +37,15 @@ export default class SideNavBar extends Component{
                 visible: false,
             })
             console.log("MENU NAV DATA",this.state.navTabs)
+        })
+        axios.get('https://sourabhmandal.pythonanywhere.com/links/')
+        .then(json =>{
+            this.setState({
+                isLoaded : true,
+                links : json.data,
+                visible: false,
+            })
+            console.log("MENU NAV DATA",this.state.links)
         })
     }
     handleClick = e => {
@@ -69,17 +79,17 @@ export default class SideNavBar extends Component{
             visible={this.state.visible}
             onOk={this.handleOk}
             onCancel={this.handleCancel}
+            width={"40rem"}
         >
-        {this.state.navTabs.map( (item) =>{
-            return(
-                <>
-                    <a href='https://github.com/sourabhmandal/'><Tag color="purple"><GithubOutlined style={{fontSize:"1.5rem", padding:"5rem"}}/></Tag></a>
-                    <a href="https://www.linkedin.com/in/sourabh-mandal-ait/"><Tag color="blue"><LinkedinOutlined style={{fontSize:"1.5rem", padding:"5rem"}}/></Tag></a>
-                    <a href="https://medium.com/@19mandal97"><Tag color="black"><MediumOutlined style={{fontSize:"1.5rem", padding:"5rem"}}/></Tag></a>
-                    <a href="https://www.facebook.com/sourabh.mandal.97/"><Tag color="geekblue"><FacebookOutlined style={{fontSize:"1.5rem", padding:"5rem"}}/></Tag></a>
-                </>
-            )
-        })}
+        
+            <div>
+                <a href="https://www.github.com/sourabhmandal"><Tag color="purple"><GithubOutlined style={{fontSize:"3rem", padding:"1rem", margin:"1rem"}}/></Tag></a>
+                <a href="https://www.linkedin.com/in/sourabh-mandal-ait/"><Tag color="blue"><LinkedinOutlined style={{fontSize:"3rem", padding:"1rem", margin:"1rem"}}/></Tag></a>
+                <a href="https://medium.com/@19mandal97"><Tag color="black"><MediumOutlined style={{fontSize:"3rem", padding:"1rem", margin:"1rem"}}/></Tag></a>
+                <a href="https://www.facebook.com/sourabh.mandal.97/"><Tag color="geekblue"><FacebookOutlined style={{fontSize:"3rem", padding:"1rem", margin:"1rem"}}/></Tag></a>
+            </div>
+            
+        
         </Modal>
 
         <Affix offsetTop={0}>
