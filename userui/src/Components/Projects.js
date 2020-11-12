@@ -51,10 +51,11 @@ export default class Projects extends Component{
                         <Card
                             style={{ width: "100%",  color:"whitesmoke"}}
                             bordered={false}
+                            hoverable
                             key={item.id}
-                            bodyStyle={{ minHeight:"200px", background:"linear-gradient(145deg, #a8ff78, #78ffd6)", boxShadow:  "27px 27px 53px #c3cfd9, -27px 0px 53px #ffffff"}}
+                            bodyStyle={{ minHeight:"200px", background:"linear-gradient(145deg, #a8ff78, #78ffd6)"}}
                             actions={[
-                                <a href={"#"}><PlaySquareTwoTone twoToneColor="#52c41a" /></a>,
+                                <a href={item.project_demo}><PlaySquareTwoTone twoToneColor="#52c41a" /></a>,
                                 <a href={item.project_link}><GithubOutlined key="github" /></a>,
                                 <a href={item.project_blog}><MediumOutlined key="medium" /></a>,
                             ]}>

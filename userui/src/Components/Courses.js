@@ -52,8 +52,8 @@ export default class Courses extends Component{
                             <List.Item>
                                 
                                 <Card
-                                    style={{ width: this.state.width < 900 ? "100%" : "100%" }}
-                                    bodyStyle={{background:"linear-gradient(90deg, #86fde8,#acb6e5)"}}
+                                    style={{ width:"100%"}}
+                                    bodyStyle={{minHeight:"200px", background:"linear-gradient(90deg, #86fde8,#acb6e5)"}}
                                     actions={[
                                         "Issueing Authority : " + "Coursera",
                                         item.from_date

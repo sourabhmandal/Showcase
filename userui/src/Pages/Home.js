@@ -100,11 +100,11 @@ export default class Home extends Component {
 
 
           <Row>
-            <Col offset={this.state.width < 750 ? 0:1} lg={11} xs={23} sm={23} md={15}  id={"education_link"}>
+            <Col offset={this.state.width < 750 ? 0:1} xl={11} lg={11} xs={23} sm={23} md={11}  id={"achive_link"}>
               <Divider><strong>ACHIVEMENTS</strong></Divider>
               <Achivements />
             </Col>
-            <Col lg={11} sm={23} xs={23} md={8} id={"hobbies_link"}>
+            <Col xl={11} lg={11} sm={23} xs={23} md={11} id={"courses_link"}>
               <Divider><strong>COURSES</strong></Divider>
               <Courses />
             </Col>

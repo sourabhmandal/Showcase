@@ -29,9 +29,9 @@ export default class Education extends Component{
                     {this.state.eduData.map( (item)=>{
                         return(
                             
-                            <Timeline.Item>
+                            <Timeline.Item key={item.id+1234567}>
                                 
-                                <Card title={item.degree} size="small" style={{ width: "100%" }}
+                                <Card title={item.degree} key={item.id} size="small" style={{ width: "100%" }}
                                     headStyle={{backgroundColor:"#0f0c29", color:"#fffde4"}}
                                     bodyStyle={{backgroundColor:"#fffde4"}}
                                     >

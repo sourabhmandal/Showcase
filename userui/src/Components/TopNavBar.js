@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Menu, Drawer, List} from 'antd'
+import {Menu, Drawer, List, Affix} from 'antd'
 import {BarsOutlined} from '@ant-design/icons';
 import { Link, animateScroll as scroll } from "react-scroll";
 import axios from 'axios';
@@ -54,11 +54,13 @@ export default class TopNavBar extends Component{
                     <List.Item><Link to={item.nav_link.substring(1)} smooth={true} onClick={this.onClose}>{item.nav_name}</Link></List.Item>
                     )}></List>
             </Drawer>
+            <Affix offsetTop={0}>
             <Menu mode="horizontal">
                 <Menu.Item key="mail" onClick={this.showDrawer} icon={<BarsOutlined />}>
                     MENU
                 </Menu.Item>
             </Menu>
+            </Affix>
             </>
         )
     }

@@ -54,7 +54,7 @@ export default class Achivements extends Component{
                         
                         <Card
                             style={{ width: "100%"}}
-                            bodyStyle={{background:"linear-gradient(90deg, #fffde4 , #EFEFBB)"}}
+                            bodyStyle={{background:"linear-gradient(90deg, #fffde4 , #EFEFBB)", minHeight:"200px"}}
                             actions={[
                                 item.position < 3 ? item.position + this.state.posending[item.position-1]  + " Position" :item.position + this.state.posending[3]  + " Position" ,
                                 item.from_date
