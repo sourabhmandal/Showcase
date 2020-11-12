@@ -20,7 +20,7 @@ export default class Achivements extends Component{
     componentDidMount(){
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
-        axios.get('http://sourabhmandal.pythonanywhere.com/achivement/')
+        axios.get('https://sourabhmandal.pythonanywhere.com/achivement/')
         .then(json =>{
             this.setState({
                 isLoaded : true,

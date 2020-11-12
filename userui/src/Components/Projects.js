@@ -19,7 +19,7 @@ export default class Projects extends Component{
     componentDidMount(){
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
-        axios.get('http://sourabhmandal.pythonanywhere.com/projects/')
+        axios.get('https://sourabhmandal.pythonanywhere.com/projects/')
         .then(json =>{
             console.log(json)
             this.setState({

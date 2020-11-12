@@ -19,7 +19,7 @@ export default class Courses extends Component{
     componentDidMount(){
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
-        axios.get('http://sourabhmandal.pythonanywhere.com/courses/')
+        axios.get('https://sourabhmandal.pythonanywhere.com/courses/')
         .then(json =>{
             this.setState({
                 isLoaded : true,

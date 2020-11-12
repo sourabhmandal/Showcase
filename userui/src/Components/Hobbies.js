@@ -13,7 +13,7 @@ export default class Hobbies extends Component{
         
     }
     componentDidMount(){
-        axios.get('http://sourabhmandal.pythonanywhere.com/hobbies/')
+        axios.get('https://sourabhmandal.pythonanywhere.com/hobbies/')
         .then(json =>{
             this.setState({
                 isLoaded : true,

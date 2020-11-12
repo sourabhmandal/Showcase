@@ -14,7 +14,7 @@ export default class Skills extends Component{
         
     }
     componentDidMount(){
-        axios.get('http://sourabhmandal.pythonanywhere.com/skills/')
+        axios.get('https://sourabhmandal.pythonanywhere.com/skills/')
         .then(json =>{
             this.setState({
                 isLoaded : true,

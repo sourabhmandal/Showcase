@@ -11,7 +11,7 @@ export default class Education extends Component{
         
     }
     componentDidMount(){
-        axios.get('http://sourabhmandal.pythonanywhere.com/education/')
+        axios.get('https://sourabhmandal.pythonanywhere.com/education/')
         .then(json =>{
             this.setState({
                 isLoaded : true,

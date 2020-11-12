@@ -15,7 +15,7 @@ export default class Experience extends Component{
     componentDidMount(){
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
-        axios.get('http://sourabhmandal.pythonanywhere.com/experience/')
+        axios.get('https://sourabhmandal.pythonanywhere.com/experience/')
         .then(json =>{
             this.setState({
                 isLoaded : true,

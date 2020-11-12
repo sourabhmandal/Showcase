@@ -24,7 +24,7 @@ export default class Blog extends Component{
     componentDidMount(){
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
-        axios.get('http://sourabhmandal.pythonanywhere.com/blog/')
+        axios.get('https://sourabhmandal.pythonanywhere.com/blog/')
         .then(json =>{
             this.setState({
                 isLoaded : true,

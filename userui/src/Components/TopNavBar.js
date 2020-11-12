@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import {Menu, Drawer, List} from 'antd'
 import {BarsOutlined} from '@ant-design/icons';
-import {navData} from '../Database/NavbarData'
-
+import { Link, animateScroll as scroll } from "react-scroll";
+import axios from 'axios';
 export default class TopNavBar extends Component{
     constructor(props){
         super(props);
         this.state={
             show : false,
+            isLoaded : false,
+            navTabs: [],
         }
         this.showDrawer = this.showDrawer.bind(this);
         this.onClose = this.onClose.bind(this);
@@ -22,7 +24,19 @@ export default class TopNavBar extends Component{
         this.setState({
             show: false
         });
-    }; 
+    };
+
+    componentDidMount(){
+        axios.get('https://sourabhmandal.pythonanywhere.com/navtabs/')
+        .then(json =>{
+            this.setState({
+                isLoaded : true,
+                navTabs : json.data,
+                visible: false,
+            })
+            console.log("Mobile MENU NAV DATA",this.state.navTabs)
+        })
+    }
     render(){
         return(
             <>
@@ -35,9 +49,9 @@ export default class TopNavBar extends Component{
             >
                 <List
                     bordered={false}
-                    dataSource={navData}
+                    dataSource={this.state.navTabs}
                     renderItem={item => (
-                    <List.Item> {item.icon} {item.title}</List.Item>
+                    <List.Item><Link to={item.nav_link.substring(1)} smooth={true} onClick={this.onClose}>{item.nav_name}</Link></List.Item>
                     )}></List>
             </Drawer>
             <Menu mode="horizontal">

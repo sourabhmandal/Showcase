@@ -43,7 +43,7 @@ export default class Home extends Component {
         <>
           {this.state.width < 750? <TopNavBar/> : <SideNavBar/>}
           <Row gutter={{ xs: 8, sm: 16, md: 0, lg: 16 }} justify="center" style={{backgroundColor:"#fff", paddingBottom:"2rem"}}  justify={"space-around"} align={'middle'}>
-            <Col lg={16} sm={23} md={16} xs={23}>
+            <Col lg={16} sm={23} md={16} xs={23} id={"about_link"}>
               <MainText/>
             </Col>
             <Col lg={8} sm={23} md={6} xs={23}>
@@ -52,25 +52,25 @@ export default class Home extends Component {
           </Row>
                 
           <Row>
-            <Col offset={this.state.width < 750 ? 0:1} lg={15} xs={23} sm={23} md={15}>
+            <Col offset={this.state.width < 750 ? 0:1} lg={15} xs={23} sm={23} md={15}  id={"education_link"}>
               <Divider><strong>Education</strong></Divider>
               <Education/>
             </Col>
-            <Col lg={8} sm={23} xs={23} md={8}>
+            <Col lg={8} sm={23} xs={23} md={8} id={"hobbies_link"}>
               <Divider><strong>Hobbies</strong></Divider>
               <Hobbies/>
             </Col>
           </Row>
 
 
-            <Col  offset={this.state.width < 770?0:2} lg={21} sm={24} xs={24} md={21}>
+            <Col  offset={this.state.width < 770?0:2} lg={21} sm={24} xs={24} md={21} id={"project_link"}>
               <Divider style={{fontSize:"2rem"}}><strong>PROJECTS</strong></Divider>
             </Col>
           <Projects />
 
 
 
-          <Col  offset={this.state.width < 768?0:2} lg={21} sm={24} md={21}>
+          <Col  offset={this.state.width < 768?0:2} lg={21} sm={24} md={21} id={"work_link"}>
             <Divider style={{fontSize:"2rem"}}><strong>WORK EXPERIENCE</strong></Divider>
           </Col>
           <Col offset={this.state.width < 900 ? 1 : 5} lg={20} xl={13} sm={24} md={22}>
@@ -80,7 +80,7 @@ export default class Home extends Component {
 
 
 
-          <Col  offset={this.state.width < 750?0:2} lg={21} sm={21} md={21}>
+          <Col  offset={this.state.width < 750?0:2} lg={21} sm={21} md={21} id={"skills_link"}>
             <Divider style={{fontSize:"2rem"}}><strong>SKILLS</strong></Divider>
           </Col>
           <Col  offset={this.state.width < 750?0:3} lg={20} sm={24} md={20}>
@@ -89,7 +89,7 @@ export default class Home extends Component {
 
 
 
-          <Col  offset={this.state.width < 750?0:2} lg={21} sm={21} md={21}>
+          <Col  offset={this.state.width < 750?0:2} lg={21} sm={21} md={21} id={"blog_link"}>
             <Divider style={{fontSize:"2rem"}}><strong>BLOG</strong></Divider>
           </Col>
           <Col  offset={this.state.width < 1100?0:1} lg={20} sm={24} md={20}>
@@ -98,7 +98,7 @@ export default class Home extends Component {
 
 
 
-          <Col  offset={this.state.width < 750?0:2} lg={21} sm={21} md={21}>
+          <Col  offset={this.state.width < 750?0:2} lg={21} sm={21} md={21} id={"achive_link"}>
             <Divider style={{fontSize:"2rem"}}><strong>ACHIVEMENTS</strong></Divider>
           </Col>
           <Col  offset={this.state.width < 750?0:5} xl={22} lg={22} sm={24} md={20}>
@@ -107,14 +107,12 @@ export default class Home extends Component {
 
           
 
-          <Col  offset={this.state.width < 750?0:2} xl={20} lg={21} xs={24} sm={21} md={21}>
+          <Col  offset={this.state.width < 750?0:2} xl={20} lg={21} xs={24} sm={21} md={21} id={"courses_link"}>
             <Divider style={{fontSize:"2rem"}}><strong>COURSES</strong></Divider>
           </Col>
           <Col  offset={this.state.width < 750?0:5} xl={22} lg={22} xs={24} sm={24} md={20}>
             <Courses />
           </Col>
-              
-
         </>
     )
   }

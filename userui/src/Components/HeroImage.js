@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {Card, Avatar } from 'antd';
 import Hero from '../Assets/sour.png';
-import { GithubOutlined, MediumOutlined, LinkedinOutlined,UserOutlined } from '@ant-design/icons';
 
 const { Meta } = Card;
 export default class HeroImage extends Component {
@@ -34,17 +33,3 @@ export default class HeroImage extends Component {
     );
   }
 }
-/*
-<Card
-                hoverable
-                style={{ width: "22rem", height: "32rem", margin:"2rem " }}
-                cover={<img src={Hero} alt="Picture Unavailable" />}
-                actions={[
-                    <LinkedinOutlined key="linkedin" />,
-                    <GithubOutlined key="github" />,
-                    <MediumOutlined key="medium" />,
-                  ]}
-            >
-                <Meta title="Army Institute of Technology" description="Alandi rd, Dighi Hils, Pune" />
-            </Card>
-*/

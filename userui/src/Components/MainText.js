@@ -15,7 +15,7 @@ export default class MainText extends Component{
         
     }
     componentDidMount(){
-        axios.get('http://sourabhmandal.pythonanywhere.com/intro/')
+        axios.get('https://sourabhmandal.pythonanywhere.com/intro/')
         .then(json =>{
             this.setState({
                 isLoaded : false,
@@ -23,7 +23,7 @@ export default class MainText extends Component{
             })
             console.log("MAIN TEXT DATA",this.state.introData)
         })
-        axios.get('http://sourabhmandal.pythonanywhere.com/links/')
+        axios.get('https://sourabhmandal.pythonanywhere.com/links/')
         .then(json =>{
             this.setState({
                 isLoaded : true,
