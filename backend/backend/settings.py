@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'v1x!l5vabs1rshd!n(42bn_^k$=&^+z701@b76yg@noyo499yl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -145,8 +145,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = 'http://sourabhmandal.pythonanywhere.com/static/'
-STATIC_ROOT='/home/sourabhmandal/Showcase/backend/static'
-STARTICFILES_DIRS = ['/home/sourabhmandal/Showcase/backend/static']
 
+
+STATIC_ROOT='/home/sourabhmandal/Showcase/backend/static'
+STATICFILES_DIRS =['/home/sourabhmandal/Showcase/backend/static',
+                    '/home/sourabhmandal/Showcase/backend/static',
+                    '/home/sourabhmandal/Showcase/backend/static/admin',
+                    '/home/sourabhmandal/Showcase/backend/static/rest_framework']
 MEDIA_ROOT = '/home/sourabhmandal/Showcase/backend/media'
 MEDIA_URL = 'http://sourabhmandal.pythonanywhere.com/media/'
