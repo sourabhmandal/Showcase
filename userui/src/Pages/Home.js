@@ -98,21 +98,17 @@ export default class Home extends Component {
 
 
 
-          <Col  offset={this.state.width < 750?0:2} lg={21} sm={21} md={21} id={"achive_link"}>
-            <Divider style={{fontSize:"2rem"}}><strong>ACHIVEMENTS</strong></Divider>
-          </Col>
-          <Col  offset={this.state.width < 750?0:5} xl={22} lg={22} sm={24} md={20}>
-            <Achivements />
-          </Col>
 
-          
-
-          <Col  offset={this.state.width < 750?0:2} xl={20} lg={21} xs={24} sm={21} md={21} id={"courses_link"}>
-            <Divider style={{fontSize:"2rem"}}><strong>COURSES</strong></Divider>
-          </Col>
-          <Col  offset={this.state.width < 750?0:5} xl={22} lg={22} xs={24} sm={24} md={20}>
-            <Courses />
-          </Col>
+          <Row>
+            <Col offset={this.state.width < 750 ? 0:1} lg={11} xs={23} sm={23} md={15}  id={"education_link"}>
+              <Divider><strong>ACHIVEMENTS</strong></Divider>
+              <Achivements />
+            </Col>
+            <Col lg={11} sm={23} xs={23} md={8} id={"hobbies_link"}>
+              <Divider><strong>COURSES</strong></Divider>
+              <Courses />
+            </Col>
+          </Row>
         </>
     )
   }
