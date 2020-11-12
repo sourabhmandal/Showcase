@@ -73,7 +73,7 @@ export default class Home extends Component {
           <Col  offset={this.state.width < 768?0:2} lg={21} sm={24} md={21} id={"work_link"}>
             <Divider style={{fontSize:"2rem"}}><strong>WORK EXPERIENCE</strong></Divider>
           </Col>
-          <Col offset={this.state.width < 900 ? 1 : 5} lg={20} xl={13} sm={24} md={22}>
+          <Col offset={this.state.width < 900 ? 1 : 2} lg={20} xl={20} sm={24} md={22}>
             <Experience/>
           </Col>
 

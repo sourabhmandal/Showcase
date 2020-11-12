@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Col, Row } from 'antd';
+import { Card, Col, Row, Skeleton} from 'antd';
 import { PlaySquareTwoTone, GithubOutlined, MediumOutlined } from "@ant-design/icons";
 import axios from 'axios'
 const {Meta} = Card;
@@ -45,12 +45,14 @@ export default class Projects extends Component{
             <Row gutter={[{ xs: 16, sm: 16, md: 64, lg: 64 }, { xs: 16, sm: 16, md: 64, lg: 64 }]} style={this.state.width < 768 ? {paddingLeft: "0rem", padding:"2rem"} : {paddingLeft:"7rem"} }>
             {this.state.projectData.map((item) => {
                 return(
+                    <Skeleton loading={!this.state.isLoaded} active paragraph>
                     <Col xs={24} sm={24} md={10} lg={7}>
+                        
                         <Card
                             style={{ width: "100%",  color:"whitesmoke"}}
                             bordered={false}
                             key={item.id}
-                            bodyStyle={{background:"linear-gradient(145deg, #F7971E, #FFD200)", boxShadow:  "27px 27px 53px #c3cfd9, -27px -27px 53px #ffffff"}}
+                            bodyStyle={{background:"linear-gradient(145deg, #F7971E, #FFD200)", boxShadow:  "27px 27px 53px #c3cfd9, -27px 0px 53px #ffffff"}}
                             actions={[
                                 <a href={"#"}><PlaySquareTwoTone twoToneColor="#52c41a" /></a>,
                                 <a href={item.project_link}><GithubOutlined key="github" /></a>,
@@ -61,7 +63,9 @@ export default class Projects extends Component{
                                 description={item.description}
                             />
                         </Card>
+                        
                     </Col>
+                    </Skeleton>
                 )
             })}
             </Row>

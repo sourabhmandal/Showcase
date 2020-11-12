@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { List, Card} from 'antd';
+import { List, Card, Skeleton} from 'antd';
 import { FileAddTwoTone } from "@ant-design/icons";
 import axios from 'axios';
 const {Meta} = Card;
@@ -42,29 +42,32 @@ export default class Courses extends Component{
     render(){
         return(
             <>
+            <Skeleton loading={!this.state.isLoaded} active avatar>
                 <List
                     size="large"
                     bordered={false}
                     dataSource={this.state.courses}
                     renderItem={item => 
-                    <List.Item>
                         
-                        
-                        <Card
-                            style={{ width: this.state.width < 900 ? "100%" : "50%" }}
-                            
-                            actions={[
-                                "Issueing Authority : " + "Coursera",
-                                item.from_date
-                            ]}>
-                            <Meta
-                            avatar={<FileAddTwoTone twoToneColor="#FFD700" style={{paddingRight:"1rem", fontSize:"1.2rem"}}/>}
-                            title={item.name}
-                            description={item.discription}
-                            />
-                        </Card>
-                    </List.Item>}
-                />
+                            <List.Item>
+                                
+                                <Card
+                                    style={{ width: this.state.width < 900 ? "100%" : "70%" }}
+                                    
+                                    actions={[
+                                        "Issueing Authority : " + "Coursera",
+                                        item.from_date
+                                    ]}>
+                                    <Meta
+                                    avatar={<FileAddTwoTone twoToneColor="#87d068" style={{paddingRight:"1rem", fontSize:"1.2rem"}}/>}
+                                    title={item.name}
+                                    description={item.discription}
+                                    />
+                                </Card>
+                                
+                            </List.Item>
+                        }
+                /></Skeleton>
             </>
         )
     }

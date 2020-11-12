@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Timeline, Card} from 'antd'
+import {Timeline, Card, Skeleton} from 'antd'
 import axios from 'axios'
 export default class Experience extends Component{
     constructor(props){
@@ -35,17 +35,19 @@ export default class Experience extends Component{
     render(){
         return(
             <>
-                <Timeline mode={this.state.width < 800? 'left' : 'alternate'} style={{padding:"2em"}}>
+                <Timeline mode={this.state.width < 800? 'left' : 'alternate'} style={{padding:"2em", width:'100%'}}>
                     {this.state.expData.map( (item)=> {
                         return(
                             <Timeline.Item label={this.state.width < 800? "" : item.company}>
-                                <Card title={item.designation + ' @' + item.company} bordered={false} style={{ width: this.state.width < 800? "100%" : 300 }}
+                                <Skeleton loading={!this.state.isLoaded} active paragraph>
+                                <Card title={item.designation + ' @' + item.company} bordered={false} style={{ width: "100%" }}
                                     actions={[
                                         item.from_date,
                                         item.to_date
                                     ]}>
                                     {item.work}
                                 </Card>
+                                </Skeleton>
                             </Timeline.Item>
                         )
                     })}

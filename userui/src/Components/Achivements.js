@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, List } from 'antd';
+import { Card, List, Skeleton } from 'antd';
 import { TrophyTwoTone } from "@ant-design/icons";
 import axios from 'axios'
 
@@ -43,6 +43,7 @@ export default class Achivements extends Component{
     render(){
         return(
             <>
+                <Skeleton loading={!this.state.isLoaded} active avatar>
                 <List
                     size="large"
                     bordered={false}
@@ -52,7 +53,7 @@ export default class Achivements extends Component{
                         
                         
                         <Card
-                            style={{ width: this.state.width < 900 ? "100%" : "50%" }}
+                            style={{ width: this.state.width < 900 ? "100%" : "70%" }}
                             
                             actions={[
                                 item.position < 3 ? item.position + this.state.posending[item.position-1]  + " Position" :item.position + this.state.posending[3]  + " Position" ,
@@ -66,6 +67,7 @@ export default class Achivements extends Component{
                         </Card>
                     </List.Item>}
                 />
+                </Skeleton>
             </>
         )
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Progress, Descriptions} from 'antd';
+import {Progress, Descriptions, Skeleton} from 'antd';
 import axios from 'axios';
 export default class Skills extends Component{
     constructor(props){
@@ -30,8 +30,10 @@ export default class Skills extends Component{
             
                 {this.state.skillsType.map( (skillsType) =>{
                     return(
+                        <Skeleton loading={!this.state.isLoaded} active paragraph>
                         <Descriptions bordered title={skillsType} style={{padding:"2rem"}}
                             column={{ xxl: 2, xl: 2, lg: 2, md: 1, sm: 1, xs: 1 }} size="small" layout="vertical">
+                            
                             {this.state.skillsData.map((items) => { 
                                 return(
                                     //console.log( skillsType, "===", items.skill, ":", skillsType === items.skill)
@@ -44,7 +46,9 @@ export default class Skills extends Component{
                                         </Descriptions.Item> : ""
                                 )
                             })}
+                            
                         </Descriptions>
+                        </Skeleton>
                     )
                 })}
             

@@ -1,6 +1,5 @@
-import renderEmpty from 'antd/lib/config-provider/renderEmpty'
 import React, { Component } from 'react'
-import { Tag } from 'antd';
+import { Tag, Skeleton } from 'antd';
 import axios from 'axios'
 export default class Hobbies extends Component{
     constructor(props){
@@ -25,12 +24,13 @@ export default class Hobbies extends Component{
     render(){
         return(
             <div style={{padding:"2rem"}}>
+                <Skeleton loading={!this.state.isLoaded} active paragraph>
                 {this.state.hobData.map((item) =>{
                     return(
                     <Tag id={item.id} style={{padding:"0.3rem", fontSize:"1rem",margin:'0.3rem'}} color={this.state.colors[Math.floor(Math.floor((Math.random()*10)%4))]} >#{item.hobbie}</Tag> 
                     )
                 })}
-
+                </Skeleton>
             </div>            
         )
     }

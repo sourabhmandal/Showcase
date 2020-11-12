@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Timeline, Card } from 'antd';
+import { Timeline, Card, Skeleton} from 'antd';
 import axios from 'axios'
 export default class Education extends Component{
     constructor(props){
@@ -23,10 +23,14 @@ export default class Education extends Component{
     render(){
         return(
             <>
+                
                 <Timeline mode={'left'} style={{padding:"1rem 2rem "}}>
+                <Skeleton loading={!this.state.isLoaded} active paragraph>
                     {this.state.eduData.map( (item)=>{
                         return(
+                            
                             <Timeline.Item>
+                                
                                 <Card title={item.degree} size="small" style={{ width: "100%" }}>
                                     <p>{item.college}</p>
                                     <p>Result : <strong>{item.sgpa}</strong></p>
@@ -35,10 +39,13 @@ export default class Education extends Component{
                                         <small style={{float:"right"}}>{item.location}</small>
                                     </div>
                                 </Card>
+                                
                             </Timeline.Item>
+                            
                         )
-                    })}
+                    })}</Skeleton>
                 </Timeline>
+                
                 </>            
         )
     }
