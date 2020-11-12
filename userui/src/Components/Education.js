@@ -31,7 +31,10 @@ export default class Education extends Component{
                             
                             <Timeline.Item>
                                 
-                                <Card title={item.degree} size="small" style={{ width: "100%" }}>
+                                <Card title={item.degree} size="small" style={{ width: "100%" }}
+                                    headStyle={{backgroundColor:"#0f0c29", color:"#fffde4"}}
+                                    bodyStyle={{backgroundColor:"#fffde4"}}
+                                    >
                                     <p>{item.college}</p>
                                     <p>Result : <strong>{item.sgpa}</strong></p>
                                     <div style={{clear:"fix"}}>

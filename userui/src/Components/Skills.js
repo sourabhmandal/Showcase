@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Progress, Descriptions, Skeleton} from 'antd';
 import axios from 'axios';
+
 export default class Skills extends Component{
     constructor(props){
         super(props);
@@ -40,9 +41,10 @@ export default class Skills extends Component{
                                     skillsType === items.skill_group ?
                                         <Descriptions.Item label={items.skill} span={1}>
                                             <Progress strokeColor={{
-                                                '0%': '#F7971E',
-                                                '100%': '#87d068',
-                                            }} percent={items.percent} status="active" />
+                                                '0%': '#12c2e9',
+                                                '50%': '#c471ed',
+                                                '100%': '#f64f59',
+                                            }} percent={items.percent} status="active" className={"meter"}/>
                                         </Descriptions.Item> : ""
                                 )
                             })}

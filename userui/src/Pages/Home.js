@@ -42,7 +42,7 @@ export default class Home extends Component {
       return(
         <>
           {this.state.width < 750? <TopNavBar/> : <SideNavBar/>}
-          <Row gutter={{ xs: 8, sm: 16, md: 0, lg: 16 }} justify="center" style={{backgroundColor:"#fff", paddingBottom:"2rem"}}  justify={"space-around"} align={'middle'}>
+          <Row gutter={{ xs: 8, sm: 16, md: 0, lg: 16 }} justify="center" style={{ backgroundColor:"#fffde4", paddingBottom:"2rem"}}  justify={"space-around"} align={'middle'}>
             <Col lg={16} sm={23} md={16} xs={23} id={"about_link"}>
               <MainText/>
             </Col>

@@ -90,7 +90,8 @@ export default class Blog extends Component{
                                 <Skeleton loading={!this.state.isLoaded} active avatar>
                                 <Col xs={24} sm={24} md={24} lg={12} xl={12}>
                                     <Card
-                                        style={{ width:'100%', margin:"1rem" }}
+                                        style={{ width:'100%', margin:"1rem"}}
+                                        bodyStyle={{minHeight:"120px"}}
                                         title={blog.name}
                                         extra={<a href={blog.post_link}>Go to the Post</a>}
                                     >

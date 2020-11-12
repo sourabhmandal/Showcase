@@ -52,7 +52,7 @@ export default class Projects extends Component{
                             style={{ width: "100%",  color:"whitesmoke"}}
                             bordered={false}
                             key={item.id}
-                            bodyStyle={{background:"linear-gradient(145deg, #F7971E, #FFD200)", boxShadow:  "27px 27px 53px #c3cfd9, -27px 0px 53px #ffffff"}}
+                            bodyStyle={{ minHeight:"200px", background:"linear-gradient(145deg, #a8ff78, #78ffd6)", boxShadow:  "27px 27px 53px #c3cfd9, -27px 0px 53px #ffffff"}}
                             actions={[
                                 <a href={"#"}><PlaySquareTwoTone twoToneColor="#52c41a" /></a>,
                                 <a href={item.project_link}><GithubOutlined key="github" /></a>,

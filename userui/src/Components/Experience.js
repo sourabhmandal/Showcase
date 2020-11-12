@@ -41,6 +41,8 @@ export default class Experience extends Component{
                             <Timeline.Item label={this.state.width < 800? "" : item.company}>
                                 <Skeleton loading={!this.state.isLoaded} active paragraph>
                                 <Card title={item.designation + ' @' + item.company} bordered={false} style={{ width: "100%" }}
+                                     headStyle={{backgroundColor:"#0f0c29", color:"#fffde4"}}
+                                     bodyStyle={{backgroundColor:"#fffde4"}}
                                     actions={[
                                         item.from_date,
                                         item.to_date

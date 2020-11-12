@@ -53,7 +53,7 @@ export default class Courses extends Component{
                                 
                                 <Card
                                     style={{ width: this.state.width < 900 ? "100%" : "70%" }}
-                                    
+                                    bodyStyle={{background:"linear-gradient(90deg, #86fde8,#acb6e5)"}}
                                     actions={[
                                         "Issueing Authority : " + "Coursera",
                                         item.from_date

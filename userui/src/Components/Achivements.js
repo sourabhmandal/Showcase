@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card, List, Skeleton } from 'antd';
-import { TrophyTwoTone } from "@ant-design/icons";
+import {  TrophyFilled } from "@ant-design/icons";
 import axios from 'axios'
 
 const {Meta} = Card;
@@ -53,15 +53,16 @@ export default class Achivements extends Component{
                         
                         
                         <Card
-                            style={{ width: this.state.width < 900 ? "100%" : "70%" }}
-                            
+                            style={{ width: this.state.width < 900 ? "100%" : "70%"}}
+                            bodyStyle={{background:"linear-gradient(90deg, #fffde4 , #EFEFBB)"}}
                             actions={[
                                 item.position < 3 ? item.position + this.state.posending[item.position-1]  + " Position" :item.position + this.state.posending[3]  + " Position" ,
                                 item.from_date
                             ]}>
                             <Meta
-                            avatar={<TrophyTwoTone twoToneColor="#FFD700" style={{paddingRight:"1rem", fontSize:"1.2rem"}}/>}
+                            avatar={<TrophyFilled  style={{color: "#FFD700", paddingRight:"1rem", fontSize:"1.2rem"}}/>}
                             title={item.name}
+                            style={{ color:"#fffde4"}}
                             description={item.discription}
                             />
                         </Card>
