@@ -13,6 +13,7 @@ import Experience from '../Components/Experience'
 import Blog from '../Components/Blog'
 import Achivements from '../Components/Achivements'
 import Courses from '../Components/Courses'
+import DSA from '../Components/DSA'
 
 export default class Home extends Component {
 
@@ -68,6 +69,11 @@ export default class Home extends Component {
             </Col>
           <Projects />
 
+          <Col  offset={this.state.width < 770?0:2} lg={21} sm={24} xs={24} md={21} id={"project_link"}>
+              <Divider style={{fontSize:"2rem"}}><strong>COMPETITIVE CODING</strong></Divider>
+            </Col>
+          <DSA />
+
 
 
           <Col  offset={this.state.width < 768?0:2} lg={21} sm={24} md={21} id={"work_link"}>
@@ -92,7 +98,7 @@ export default class Home extends Component {
           <Col  offset={this.state.width < 750?0:2} lg={21} sm={21} md={21} id={"blog_link"}>
             <Divider style={{fontSize:"2rem"}}><strong>BLOG</strong></Divider>
           </Col>
-          <Col  offset={this.state.width < 1100?0:1} lg={20} sm={24} md={20}>
+          <Col  offset={this.state.width < 1100?0:1} lg={20} sm={24} md={20} xs={24}>
             <Blog />
           </Col>
 

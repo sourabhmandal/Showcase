@@ -35,11 +35,11 @@ export default class Experience extends Component{
     render(){
         return(
             <>
-                <Timeline mode={this.state.width < 800? 'left' : 'alternate'} style={{padding:"2em", width:'100%'}}>
+            <Skeleton loading={!this.state.isLoaded} active paragraph>
+                <Timeline mode={this.state.width < 800? 'left' : 'alternate'} style={this.state.width < 700? {padding:"0.5rem", width:'100%'} :{padding:"2em", width:'100%'}}>
                     {this.state.expData.map( (item)=> {
                         return(
                             <Timeline.Item label={this.state.width < 800? "" : item.company}>
-                                <Skeleton loading={!this.state.isLoaded} active paragraph>
                                 <Card title={item.designation + ' @' + item.company} bordered={false} style={{ width: "100%" }}
                                      headStyle={{backgroundColor:"#0f0c29", color:"#fffde4"}}
                                      bodyStyle={{backgroundColor:"#fffde4"}}
@@ -49,11 +49,12 @@ export default class Experience extends Component{
                                     ]}>
                                     {item.work}
                                 </Card>
-                                </Skeleton>
+                                
                             </Timeline.Item>
                         )
                     })}
                 </Timeline>
+                </Skeleton>
             </>
         )
     }

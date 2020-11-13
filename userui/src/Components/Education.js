@@ -5,12 +5,16 @@ export default class Education extends Component{
     constructor(props){
         super(props);
         this.state = {
+            width:0,
+            height:0,
             isLoaded : false,
             eduData: []
         }
-        
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
     componentDidMount(){
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
         axios.get('https://sourabhmandal.pythonanywhere.com/education/')
         .then(json =>{
             this.setState({
@@ -19,12 +23,21 @@ export default class Education extends Component{
             })
             console.log("EDUCATION DATA",this.state.eduData)
         })
+        
     }
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+    
+    updateWindowDimensions() {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    }
+
     render(){
         return(
             <>
                 
-                <Timeline mode={'left'} style={{padding:"1rem 2rem "}}>
+                <Timeline mode={'left'} style={this.state.width < 700 ? {padding:"1rem 0rem 1rem 0.5rem"}: {padding:"1rem 2rem "}}>
                 <Skeleton loading={!this.state.isLoaded} active paragraph>
                     {this.state.eduData.map( (item)=>{
                         return(

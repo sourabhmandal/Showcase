@@ -6,15 +6,20 @@ export default class Skills extends Component{
     constructor(props){
         super(props);
         this.state = {
+            width: 0,
+            height: 0,
             isLoaded : false,
             skillsData: [],
             skillsType: ['Programming Language', 'Libraries / Framework', 'Data Storage / Handling',
                         'Soft Skills', 'Tools'],
             skillsDict: [],
         }
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         
     }
     componentDidMount(){
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
         axios.get('https://sourabhmandal.pythonanywhere.com/skills/')
         .then(json =>{
             this.setState({
@@ -25,6 +30,15 @@ export default class Skills extends Component{
         })
         
     }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+    
+    updateWindowDimensions() {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    }
+
     render(){
         return(
             <>
@@ -32,12 +46,11 @@ export default class Skills extends Component{
                 {this.state.skillsType.map( (skillsType) =>{
                     return(
                         <Skeleton loading={!this.state.isLoaded} active paragraph>
-                        <Descriptions bordered title={skillsType} style={{padding:"2rem"}} key={Math.floor(Math.random()*1000000)}
+                        <Descriptions bordered title={skillsType} style={{padding:this.state.width <700 ? "1rem":"2rem"}} key={Math.floor(Math.random()*1000000)}
                             column={{ xxl: 2, xl: 2, lg: 2, md: 1, sm: 1, xs: 1 }} size="small" layout="vertical">
                             
                             {this.state.skillsData.map((items) => { 
                                 return(
-                                    //console.log( skillsType, "===", items.skill, ":", skillsType === items.skill)
                                     skillsType === items.skill_group ?
                                         <Descriptions.Item label={items.skill} key={items.id} span={1}>
                                             <Progress strokeColor={{

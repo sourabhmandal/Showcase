@@ -13,6 +13,7 @@ export default class Blog extends Component{
             height:0,
             isLoaded : false,
             blogData: [],
+            fourBlogData: [],
             show: false
         }
         this.showmore = this.showmore.bind(this);
@@ -28,6 +29,7 @@ export default class Blog extends Component{
             this.setState({
                 isLoaded : true,
                 blogData : json.data,
+                fourBlogData : json.data.slice(0, 4)
             })
             console.log("BLOG DATA : ", this.state.blogData)
         })
@@ -52,7 +54,7 @@ export default class Blog extends Component{
         return(
             <>
                 <Drawer
-                    width={this.state.width < 700 ? "80%" : "60%"}
+                    width={this.state.width < 700 ? "90%" : "60%"}
                     placement="right"
                     closable={false}
                     onClose={this.onClose}
@@ -83,14 +85,14 @@ export default class Blog extends Component{
 
 
 
-
-                    <Row gutter={[{ xs: 16, sm: 16, md: 32, lg: 16 }, { xs: 16, sm: 16, md: 32, lg:16 }]} style={this.state.width < 768 ? {paddingLeft: "0rem", padding:"2rem"} : {paddingLeft:"7rem"} }>
-                        {this.state.blogData.map((blog) => {
+                    <Skeleton loading={!this.state.isLoaded} active avatar>
+                    <Row gutter={[{ xs: 16, sm: 16, md: 32, lg: 16 }, { xs: 16, sm: 16, md: 32, lg:16 }]} style={this.state.width < 700 ? {padding:"0.5rem"} : {paddingLeft:"7rem"} }>
+                        {this.state.fourBlogData.map((blog) => {
                             return(
-                                <Skeleton loading={!this.state.isLoaded} active avatar>
+                                
                                 <Col xs={24} sm={24} md={24} lg={12} xl={12}>
                                     <Card
-                                        style={{ width:'100%', margin:"1rem"}}
+                                        style={{ width:'100%', marginRight:"0.5rem"}}
                                         bodyStyle={{minHeight:"120px"}}
                                         title={blog.name}
                                         extra={<a href={blog.post_link}>Go to the Post</a>}
@@ -102,10 +104,11 @@ export default class Blog extends Component{
                                 </Card>
                                 
                             </Col>
-                            </Skeleton>
+                            
                         )
                     })}
                     </Row>
+                    </Skeleton>
                 <Row justify={"center"} style={{padding:"1rem"}}>
                     <Col offset={2}>
                         <Button value="more" onClick={this.showmore}>MORE <RightSquareOutlined /></Button>
