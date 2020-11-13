@@ -1,37 +1,35 @@
 import React, { Component } from 'react'
-import { Tag, Card, Skeleton, Table, Space} from 'antd';
-import { FileAddTwoTone } from "@ant-design/icons";
-import axios from 'axios';
-import Avatar from 'antd/lib/avatar/avatar';
+import { Card, Col, Row, Skeleton} from 'antd';
+import { PlaySquareTwoTone, GithubOutlined, MediumOutlined } from "@ant-design/icons";
+import axios from 'axios'
 const {Meta} = Card;
-const {Column, ColumnGroup} = Table;
-export default class DSA extends Component{
+
+
+export default class Projects extends Component{
     constructor(props){
-        super(props);
+        super(props)
         this.state = {
-            width:0,
-            height:0,
-            isLoaded : false,
-            courses: []
+          width:0,
+          height:0,
+          projectData: [],
+          isLoaded: false,
         }
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
-
     componentDidMount(){
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
-        axios.get('https://sourabhmandal.pythonanywhere.com/courses/')
+        axios.get('https://sourabhmandal.pythonanywhere.com/projects/')
         .then(json =>{
+            console.log(json)
             this.setState({
                 isLoaded : true,
-                courses : json.data,
+                projectData : json.data,
             })
-            console.log("COURSE DATA : ", this.state.courses)
+            console.log("DSA DATA",this.state.projectData)
         })
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-        
     }
-
+    
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateWindowDimensions);
     }
@@ -40,63 +38,41 @@ export default class DSA extends Component{
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
 
+
+      
     render(){
-        const data = [
-            {
-              key: '1',
-              firstName: 'John',
-              age: 32,
-              address: 'New York No. 1 Lake Park',
-              tags: ['nice', 'developer'],
-            },
-            {
-              key: '2',
-              firstName: 'Jim',
-              age: 42,
-              address: 'London No. 1 Lake Park',
-              tags: ['loser'],
-            },
-            {
-              key: '3',
-              firstName: 'Black',
-              age: 32,
-              address: 'Sidney No. 1 Lake Park',
-              tags: ['cool', 'teacher'],
-            },
-          ];
         return(
-                <Skeleton loading={!this.state.isLoaded} active avatar>
-                    <Table dataSource={data} pagination={false} style={this.state.width <700 ? {margin:'0rem 0.5rem'} : {margin:'0rem 7rem'}}>
+            <Skeleton loading={!this.state.isLoaded} active paragraph>
+            <Row gutter={[{ xs: 16, sm: 16, md: 64, lg: 64 }, { xs: 16, sm: 16, md: 64, lg: 64 }]} style={this.state.width < 700 ? {padding:"0.5rem"} : {paddingLeft:"7rem"} }>
+            {this.state.projectData.map((item) => {
+                return(
+                    
+                    <Col xs={24} sm={24} md={10} lg={7}>
                         
-                        <Column title="Username" dataIndex="firstName" key="firstName" />
-                        <Column title="Platform" dataIndex="age" key="age" />
-                        <Column title="Ranking" dataIndex="address" key="address" />
-                        <Column
-                        title="Remarks"
-                        dataIndex="tags"
-                        key="tags"
-                        render={tags => (
-                            <>
-                            {tags.map(tag => (
-                                <Tag color="blue" key={tag}>
-                                {tag}
-                                </Tag>
-                            ))}
-                            </>
-                        )}
-                        />
-                        <Column
-                        title="Action"
-                        key="action"
-                        render={(text, record) => (
-                            <Space size="middle">
-                            <a>Invite {record.lastName}</a>
-                            <a>Delete</a>
-                            </Space>
-                        )}
-                        />
-                    </Table>
-                </Skeleton>
+                        <Card
+                            style={{ width: "100%",  color:"whitesmoke"}}
+                            bordered={false}
+                            hoverable
+                            key={item.id}
+                            bodyStyle={{ minHeight:"200px", background:"linear-gradient(145deg, #a8ff78, #78ffd6)"}}
+                            actions={[
+                                item.project_demo,
+                                <a href={item.project_link}><GithubOutlined key="github" /></a>,
+                                <a href={item.project_blog}><MediumOutlined key="medium" /></a>,
+                            ]}>
+                            <Meta
+                                title={item.title}
+                                description={item.description}
+                            />
+                        </Card>
+                        
+                    </Col>
+                    
+                )
+            })}
+            </Row>
+            </Skeleton>
+
         )
     }
 }

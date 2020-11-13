@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'Hobbies.apps.HobbiesConfig',
     'Project.apps.ProjectConfig',
     'Skill.apps.SkillConfig',
+    'dsa.apps.DsaConfig',
     'rest_framework',
     'corsheaders',
 
@@ -147,8 +148,8 @@ USE_TZ = True
 STATIC_URL = 'http://sourabhmandal.pythonanywhere.com/static/'
 
 
-STATIC_ROOT='/home/sourabhmandal/Showcase/backend/static'
-STATICFILES_DIRS =['/home/sourabhmandal/Showcase/backend/static',
+STATIC_ROOT = '/home/sourabhmandal/Showcase/backend/static'
+STATICFILES_DIRS = ['/home/sourabhmandal/Showcase/backend/static',
                     '/home/sourabhmandal/Showcase/backend/static',
                     '/home/sourabhmandal/Showcase/backend/static/admin',
                     '/home/sourabhmandal/Showcase/backend/static/rest_framework']

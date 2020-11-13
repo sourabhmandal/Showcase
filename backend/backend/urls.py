@@ -27,7 +27,7 @@ from Hobbies.views import HobbiesView
 from intro.views import IntroductionView, LinksView, NavTabsView, ResumePDFView
 from Project.views import ProjectsView
 from Skill.views import SkillsView
-
+from dsa.views import DsaView
 
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
@@ -44,6 +44,7 @@ urlpatterns = [
     path('resume/', ResumePDFView.as_view(), name='resume'),
     path('projects/', ProjectsView.as_view(), name='projects'),
     path('skills/', SkillsView.as_view(), name='skills'),
+    path('dsa/', DsaView.as_view(), name='skills'),
 ]
 
 if settings.DEBUG:
