@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import environ
+import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,15 +23,35 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'v1x!l5vabs1rshd!n(42bn_^k$=&^+z701@b76yg@noyo499yl'
+environ.Env.read_env()
+env = environ.Env(
+    DEBUG=(bool, True),
+    SECRET_KEY=(str, '-'),
+    SECURE_SITE=(bool, False),
+    DB_ENGINE=(str, ''),
+    DB_NAME=(str, ''),
+    DB_USER=(str, ''),
+    DB_PASSWORD=(str, ''),
+    DB_HOST=(str, '')
+)
+print(":::::::::::::::::: ENVS ::::::::::::::::::")
+print("DEBUG : ", env('DEBUG'))
+print("SECRET_KEY : ", env('SECRET_KEY'))
+print("SECURE_SITE : ", env('SECURE_SITE'))
+
+
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = env('DEBUG')
 ALLOWED_HOSTS = ['*']
-
-CORS_ORIGIN_ALLOW_ALL = True
-
-
+CORS_ORIGIN_ALLOW_ALL = env('SECURE_SITE')
+SECURE_HSTS_SECONDS = env('SECURE_SITE')
+CSRF_COOKIE_SECURE = env('SECURE_SITE')
+SESSION_COOKIE_SECURE = env('SECURE_SITE')
+SECURE_SSL_REDIRECT = env('SECURE_SITE')
+SECURE_HSTS_INCLUDE_SUBDOMAINS = env('SECURE_SITE')
+SECURE_HSTS_PRELOAD = env('SECURE_SITE')
 # Application definition
 
 INSTALLED_APPS = [
@@ -68,13 +90,13 @@ MIDDLEWARE = [
 
 ]
 
-# REST_FRAMEWORK = {
-#     # Use Django's standard `django.contrib.auth` permissions,
-#     # or allow read-only access for unauthenticated users.
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-#     ]
-# }
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -103,8 +125,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': env('DB_ENGINE'),
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST')
     }
 }
 
@@ -145,13 +170,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = 'http://sourabhmandal.pythonanywhere.com/static/'
+# STATIC_URL = 'http://sourabhmandal.pythonanywhere.com/static/'
 
 
-STATIC_ROOT = '/home/sourabhmandal/Showcase/backend/static'
-STATICFILES_DIRS = ['/home/sourabhmandal/Showcase/backend/static',
-                    '/home/sourabhmandal/Showcase/backend/static',
-                    '/home/sourabhmandal/Showcase/backend/static/admin',
-                    '/home/sourabhmandal/Showcase/backend/static/rest_framework']
-MEDIA_ROOT = '/home/sourabhmandal/Showcase/backend/media'
-MEDIA_URL = 'http://sourabhmandal.pythonanywhere.com/media/'
+# STATIC_ROOT = '/home/sourabhmandal/Showcase/backend/static'
+# STATICFILES_DIRS = ['/home/sourabhmandal/Showcase/backend/static',
+#                     '/home/sourabhmandal/Showcase/backend/static',
+#                     '/home/sourabhmandal/Showcase/backend/static/admin',
+#                     '/home/sourabhmandal/Showcase/backend/static/rest_framework']
+# MEDIA_ROOT = '/home/sourabhmandal/Showcase/backend/media'
+# MEDIA_URL = 'http://sourabhmandal.pythonanywhere.com/media/'
+# STATIC_URL = 'http://sourabhmandal.pythonanywhere.com/static/'
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    '/home/sourabhmandal/Showcase/backend/static',
+    '/home/sourabhmandal/Showcase/backend/static'
+]
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+MEDIA_URL = '/media/'

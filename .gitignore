@@ -4,3 +4,4 @@
 **/migrations
 **/static
 **/media
+**/.env
