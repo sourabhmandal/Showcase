@@ -11,7 +11,7 @@ class Dsa(models.Model):
     remark = models.TextField(verbose_name="Remark", max_length=500)
 
     def __str__(self):
-        return self.name
+        return self.username + " @ " + self.platform
 
     class Meta:
         verbose_name_plural = 'DSA and CP Skills'
