@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Col, Row, Skeleton} from 'antd';
+import { Card, Col, Row, Skeleton, Typography} from 'antd';
 import { RiseOutlined, StarFilled, LinkOutlined} from "@ant-design/icons";
 import axios from 'axios'
 const {Meta} = Card;
@@ -50,21 +50,18 @@ export default class Projects extends Component{
                     <Col xs={24} sm={24} md={10} lg={7}>
                         
                         <Card
-                            style={{ width: "100%",  color:"whitesmoke"}}
+                            style={{ width: "100%"}}
                             bordered={false}
                             hoverable
                             key={String(item.id)+"dsa"}
-                            bodyStyle={{ minHeight:"200px", background:"linear-gradient(145deg, #a8ff78, #78ffd6)"}}
+                            bodyStyle={{ minHeight:"200px", background:"linear-gradient(145deg, #36D1DC, #5B86E5)"}}
                             actions={[
                                 <a href={item.link}><StarFilled key={"rating" + String(item.id)} style={{color:"gold"}} />{item.rating}</a>,
                                 <a href={item.link}><RiseOutlined key={"ranking" + String(item.id)} style={{color:"blue"}}/>{item.ranking}</a>,
                                 <a href={item.link}><LinkOutlined key={"link" + String(item.id)}  style={{color:"cyan"}}/></a>,
                             ]}>
-                            <Meta
-                                title={item.username}
-                                title={item.platform}
-                                description={item.remark}
-                            />
+                                <h2>{item.username}, <small>{item.platform}</small></h2>
+                                <Typography.Paragraph>{item.remark}</Typography.Paragraph>
                         </Card>
                         
                     </Col>
