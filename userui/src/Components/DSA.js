@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card, Col, Row, Skeleton} from 'antd';
-import { PlaySquareTwoTone, GithubOutlined, MediumOutlined } from "@ant-design/icons";
+import { RiseOutlined, StarFilled, LinkOutlined} from "@ant-design/icons";
 import axios from 'axios'
 const {Meta} = Card;
 
@@ -24,7 +24,7 @@ export default class Projects extends Component{
             console.log(json)
             this.setState({
                 isLoaded : true,
-                projectData : json.data,
+                dsaData : json.data,
             })
             console.log("DSA DATA",this.state.dsaData)
         })
@@ -53,16 +53,17 @@ export default class Projects extends Component{
                             style={{ width: "100%",  color:"whitesmoke"}}
                             bordered={false}
                             hoverable
-                            key={item.id}
+                            key={String(item.id)+"dsa"}
                             bodyStyle={{ minHeight:"200px", background:"linear-gradient(145deg, #a8ff78, #78ffd6)"}}
                             actions={[
-                                item.project_demo,
-                                <a href={item.project_link}><GithubOutlined key="github" /></a>,
-                                <a href={item.project_blog}><MediumOutlined key="medium" /></a>,
+                                <a href={item.link}><StarFilled key={"rating" + String(item.id)} style={{color:"gold"}} />{item.rating}</a>,
+                                <a href={item.link}><RiseOutlined key={"ranking" + String(item.id)} style={{color:"blue"}}/>{item.ranking}</a>,
+                                <a href={item.link}><LinkOutlined key={"link" + String(item.id)}  style={{color:"cyan"}}/></a>,
                             ]}>
                             <Meta
-                                title={item.title}
-                                description={item.description}
+                                title={item.username}
+                                title={item.platform}
+                                description={item.remark}
                             />
                         </Card>
                         
