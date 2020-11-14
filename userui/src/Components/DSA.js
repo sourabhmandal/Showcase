@@ -11,7 +11,7 @@ export default class Projects extends Component{
         this.state = {
           width:0,
           height:0,
-          projectData: [],
+          dsaData: [],
           isLoaded: false,
         }
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
@@ -19,14 +19,14 @@ export default class Projects extends Component{
     componentDidMount(){
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
-        axios.get('https://sourabhmandal.pythonanywhere.com/projects/')
+        axios.get('https://sourabhmandal.pythonanywhere.com/dsa/')
         .then(json =>{
             console.log(json)
             this.setState({
                 isLoaded : true,
                 projectData : json.data,
             })
-            console.log("DSA DATA",this.state.projectData)
+            console.log("DSA DATA",this.state.dsaData)
         })
     }
     
@@ -44,7 +44,7 @@ export default class Projects extends Component{
         return(
             <Skeleton loading={!this.state.isLoaded} active paragraph>
             <Row gutter={[{ xs: 16, sm: 16, md: 64, lg: 64 }, { xs: 16, sm: 16, md: 64, lg: 64 }]} style={this.state.width < 700 ? {padding:"0.5rem"} : {paddingLeft:"7rem"} }>
-            {this.state.projectData.map((item) => {
+            {this.state.dsaData.map((item) => {
                 return(
                     
                     <Col xs={24} sm={24} md={10} lg={7}>

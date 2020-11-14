@@ -99,7 +99,7 @@ export default class SideNavBar extends Component{
                     {this.state.navTabs.map( (item)=>{
                         return(
                             <Menu.Item key={item.id}>
-                                <Link smooth={true} to={item.nav_link.substring(1)}>{item.nav_name}</Link>
+                                <Link smooth={true} to={item.nav_link}>{item.nav_name}</Link>
                             </Menu.Item>
                         ) 
                     })}

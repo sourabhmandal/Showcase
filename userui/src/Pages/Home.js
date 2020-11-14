@@ -69,7 +69,7 @@ export default class Home extends Component {
             </Col>
           <Projects />
 
-          <Col  offset={this.state.width < 770?0:2} lg={21} sm={24} xs={24} md={21} id={"project_link"}>
+          <Col  offset={this.state.width < 770?0:2} lg={21} sm={24} xs={24} md={21} id={"cp_link"}>
               <Divider style={{fontSize:"2rem"}}><strong>COMPETITIVE CODING</strong></Divider>
             </Col>
           <DSA />

@@ -51,7 +51,7 @@ export default class TopNavBar extends Component{
                     bordered={false}
                     dataSource={this.state.navTabs}
                     renderItem={item => (
-                    <List.Item><Link to={item.nav_link.substring(1)} smooth={true} onClick={this.onClose}>{item.nav_name}</Link></List.Item>
+                    <List.Item><Link to={item.nav_link} smooth={true} onClick={this.onClose}>{item.nav_name}</Link></List.Item>
                     )}></List>
             </Drawer>
             <Affix offsetTop={0}>
