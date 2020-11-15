@@ -37,7 +37,7 @@ export default class Education extends Component{
         return(
             <>
                 
-                <Timeline mode={'left'} style={this.state.width < 700 ? {padding:"1rem 0rem 1rem 0.5rem"}: {padding:"1rem 2rem "}}>
+                <Timeline mode={'left'} style={this.state.width < 700 ? {padding:"1rem 0.5rem 1rem 0.5rem"}: {padding:"1rem 2rem "}}>
                 <Skeleton loading={!this.state.isLoaded} active paragraph>
                     {this.state.eduData.map( (item)=>{
                         return(

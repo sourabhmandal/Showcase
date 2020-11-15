@@ -42,11 +42,12 @@ export default class Achivements extends Component{
 
     render(){
         return(
-            <>
+            <div>
                 <Skeleton loading={!this.state.isLoaded} active avatar>
                 <List
                     size="large"
                     bordered={false}
+                    style={{padding:"0" , margin:"0"}}
                     dataSource={this.state.achive}
                     renderItem={item => 
                     <List.Item>
@@ -69,7 +70,7 @@ export default class Achivements extends Component{
                     </List.Item>}
                 />
                 </Skeleton>
-            </>
+            </div>
         )
     }
 }

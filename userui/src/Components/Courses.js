@@ -55,8 +55,8 @@ export default class Courses extends Component{
                                     style={{ width:"100%"}}
                                     bodyStyle={{minHeight:"200px", background:"linear-gradient(90deg, #86fde8,#acb6e5)"}}
                                     actions={[
-                                        "Issueing Authority : " + "Coursera",
-                                        item.from_date
+                                        <a href={item.link}>{item.from_date}</a>,
+                                        <a href={item.link}>Issueing Authority: {item.issuer}</a>
                                     ]}>
                                     <Meta
                                     avatar={<FileAddTwoTone twoToneColor="#87d068" style={{paddingRight:"1rem", fontSize:"1.2rem"}}/>}

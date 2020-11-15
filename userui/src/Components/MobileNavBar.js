@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Menu, Drawer, List, Affix} from 'antd'
 import {BarsOutlined} from '@ant-design/icons';
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 import axios from 'axios';
-export default class TopNavBar extends Component{
+export default class MobileNavBar extends Component{
     constructor(props){
         super(props);
         this.state={

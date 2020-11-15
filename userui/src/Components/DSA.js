@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Card, Col, Row, Skeleton, Typography} from 'antd';
 import { RiseOutlined, StarFilled, LinkOutlined} from "@ant-design/icons";
 import axios from 'axios'
-const {Meta} = Card;
 
 
 export default class Projects extends Component{

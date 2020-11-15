@@ -4,7 +4,7 @@ import SideNavBar from '../Components/SideNavBar'
 import {Divider} from 'antd';
 import MainText from '../Components/MainText'
 import HeroImage from '../Components/HeroImage'
-import TopNavBar from '../Components/TopNavBar'
+import TopNavBar from '../Components/MobileNavBar'
 import Education from '../Components/Education'
 import Hobbies from '../Components/Hobbies'
 import Projects from '../Components/Projects'
@@ -53,7 +53,7 @@ export default class Home extends Component {
           </Row>
                 
           <Row>
-            <Col offset={this.state.width < 750 ? 0:1} lg={15} xs={23} sm={23} md={15}  id={"education_link"}>
+            <Col offset={this.state.width < 750 ? 0:1} lg={15} xs={23} sm={24} xs={24} md={15}  id={"education_link"}>
               <Divider><strong>Education</strong></Divider>
               <Education/>
             </Col>
@@ -70,7 +70,7 @@ export default class Home extends Component {
           <Projects />
 
           <Col  offset={this.state.width < 770?0:2} lg={21} sm={24} xs={24} md={21} id={"cp_link"}>
-              <Divider style={{fontSize:"2rem"}}><strong>COMPETITIVE CODING</strong></Divider>
+              <Divider style={{fontSize:"2rem"}}><strong>CP/DSA SKILLS</strong></Divider>
             </Col>
           <DSA />
 
@@ -79,7 +79,7 @@ export default class Home extends Component {
           <Col  offset={this.state.width < 768?0:2} lg={21} sm={24} md={21} id={"work_link"}>
             <Divider style={{fontSize:"2rem"}}><strong>WORK EXPERIENCE</strong></Divider>
           </Col>
-          <Col offset={this.state.width < 900 ? 1 : 2} lg={20} xl={20} sm={24} md={22}>
+          <Col offset={this.state.width < 900 ? 1 : 2} lg={20} xl={20} xs={24} sm={24} md={22}>
             <Experience/>
           </Col>
 
@@ -106,11 +106,11 @@ export default class Home extends Component {
 
 
           <Row>
-            <Col offset={this.state.width < 750 ? 0:1} xl={11} lg={11} xs={23} sm={23} md={11}  id={"achive_link"}>
+            <Col offset={this.state.width < 750 ? 0:1} xl={11} lg={11} xs={24} sm={24} md={11}  id={"achive_link"}>
               <Divider><strong>ACHIVEMENTS</strong></Divider>
               <Achivements />
             </Col>
-            <Col xl={11} lg={11} sm={23} xs={23} md={11} id={"courses_link"}>
+            <Col xl={11} lg={11} sm={24} xs={24} md={11} id={"courses_link"}>
               <Divider><strong>COURSES</strong></Divider>
               <Courses />
             </Col>
