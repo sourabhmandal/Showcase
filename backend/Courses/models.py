@@ -3,6 +3,8 @@ from django.db import models
 
 class Courses(models.Model):
     name = models.CharField(verbose_name="Course Name", max_length=500)
+    link = models.CharField(
+        verbose_name="Certificate / Proof", max_length=500, default="#")
     discription = models.TextField(verbose_name="Description")
     from_date = models.DateField(verbose_name="Start Date")
     to_date = models.DateField(verbose_name="End Date")

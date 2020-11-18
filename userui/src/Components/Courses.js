@@ -56,6 +56,7 @@ export default class Courses extends Component{
                                     bodyStyle={{minHeight:"200px", background:"linear-gradient(90deg, #86fde8,#acb6e5)"}}
                                     actions={[
                                         <a href={item.link}>{item.from_date}</a>,
+                                        <a href={item.link}>Certificate</a>,
                                         <a href={item.link}>Issueing Authority: {item.issuer}</a>
                                     ]}>
                                     <Meta

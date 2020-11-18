@@ -57,8 +57,9 @@ export default class Achivements extends Component{
                             style={{ width: "100%"}}
                             bodyStyle={{background:"linear-gradient(90deg, #fffde4 , #EFEFBB)", minHeight:"200px"}}
                             actions={[
-                                item.position < 3 ? item.position + this.state.posending[item.position-1]  + " Position" :item.position + this.state.posending[3]  + " Position" ,
-                                item.from_date
+                                <a href={item.link}>{item.position < 3 ? item.position + this.state.posending[item.position-1]  + " Position" :item.position + this.state.posending[3]  + " Position"}</a>,
+                                <a href={item.link}>Certificate</a>,
+                                <a href={item.link}>{item.from_date}</a>
                             ]}>
                             <Meta
                             avatar={<TrophyFilled  style={{color: "#FFD700", paddingRight:"1rem", fontSize:"1.2rem"}}/>}
