@@ -47,13 +47,13 @@ export default class Projects extends Component{
             {this.state.projectData.map((item) => {
                 return(
                     
-                    <Col xs={24} sm={24} md={10} lg={7}>
+                    <Col xs={24} sm={24} md={10} lg={7} key={item.id + 16124}>
                         
                         <Card
                             style={{ width: "100%",  color:"whitesmoke"}}
                             bordered={false}
                             hoverable
-                            key={item.id}
+                            key={item.id + 1390}
                             bodyStyle={{ minHeight:"200px", background:"linear-gradient(145deg, #a8ff78, #78ffd6)"}}
                             actions={[
                                 <a href={item.project_demo}><PlaySquareTwoTone twoToneColor="#52c41a" /></a>,

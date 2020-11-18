@@ -24,10 +24,10 @@ export default class Hobbies extends Component{
     render(){
         return(
             <div style={{padding:"2rem"}}>
-                <Skeleton loading={!this.state.isLoaded} active paragraph>
+                <Skeleton loading={!this.state.isLoaded} active paragraph key={21}>
                 {this.state.hobData.map((item) =>{
                     return(
-                    <Tag id={item.id} style={{padding:"0.3rem", fontSize:"1rem",margin:'0.3rem'}} color={this.state.colors[Math.floor(Math.floor((Math.random()*10)%4))]} >#{item.hobbie}</Tag> 
+                    <Tag key={item.id+6712} style={{padding:"0.3rem", fontSize:"1rem",margin:'0.3rem'}} color={this.state.colors[Math.floor(Math.floor((Math.random()*10)%4))]} >#{item.hobbie}</Tag> 
                     )
                 })}
                 </Skeleton>

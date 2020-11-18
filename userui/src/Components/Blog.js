@@ -63,11 +63,12 @@ export default class Blog extends Component{
                     {this.state.blogData.map( (blog)=>{
                        return(
                         <>
-                            <Skeleton loading={!this.state.isLoaded} active avatar>
+                            <Skeleton loading={!this.state.isLoaded} active avatar key={blog.id + 127863}>
                                 <Card
                                     style={{ width: '100%', margin:"1rem 0rem" }}
                                     title={blog.name}
                                     extra={<a href={blog.post_link}>Go to the Post</a>}
+                                    key={blog.id + 721312}
                                     >
                                     <Meta
                                     avatar={<MediumOutlined />}
@@ -85,7 +86,7 @@ export default class Blog extends Component{
 
 
 
-                    <Skeleton loading={!this.state.isLoaded} active avatar>
+                    <Skeleton loading={!this.state.isLoaded} active avatar key={7129}>
                     <Row gutter={[{ xs: 16, sm: 16, md: 32, lg: 16 }, { xs: 16, sm: 16, md: 32, lg:16 }]} style={this.state.width < 700 ? {padding:"0.5rem"} : {paddingLeft:"7rem"} }>
                         {this.state.fourBlogData.map((blog) => {
                             return(
@@ -96,6 +97,7 @@ export default class Blog extends Component{
                                         bodyStyle={{minHeight:"120px"}}
                                         title={blog.name}
                                         extra={<a href={blog.post_link}>Go to the Post</a>}
+                                        key={blog.id + 16212545}
                                     >
                                     <Meta
                                     avatar={<MediumOutlined />}
@@ -111,7 +113,7 @@ export default class Blog extends Component{
                     </Skeleton>
                 <Row justify={"center"} style={{padding:"1rem"}}>
                     <Col offset={2}>
-                        <Button value="more" onClick={this.showmore}>MORE <RightSquareOutlined /></Button>
+                        <Button value="more" key={1274400} onClick={this.showmore}>MORE <RightSquareOutlined /></Button>
                     </Col>
                 </Row>
             </>

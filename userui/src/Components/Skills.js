@@ -45,14 +45,14 @@ export default class Skills extends Component{
             
                 {this.state.skillsType.map( (skillsType) =>{
                     return(
-                        <Skeleton loading={!this.state.isLoaded} active paragraph>
-                        <Descriptions bordered title={skillsType} style={{padding:this.state.width <700 ? "1rem":"2rem"}} key={Math.floor(Math.random()*1000000)}
+                        <Skeleton loading={!this.state.isLoaded} active paragraph key={skillsType}>
+                        <Descriptions bordered title={skillsType}  key={skillsType + 'a'} style={{padding:this.state.width <700 ? "1rem":"2rem"}} key={Math.floor(Math.random()*1000000)}
                             column={{ xxl: 2, xl: 2, lg: 2, md: 1, sm: 1, xs: 1 }} size="small" layout="vertical">
                             
                             {this.state.skillsData.map((items) => { 
                                 return(
                                     skillsType === items.skill_group ?
-                                        <Descriptions.Item label={items.skill} key={items.id} span={1}>
+                                        <Descriptions.Item label={items.skill} key={items.id+452} span={1}>
                                             <Progress strokeColor={{
                                                 '0%': '#12c2e9',
                                                 '50%': '#c471ed',
