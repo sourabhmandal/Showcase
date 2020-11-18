@@ -58,7 +58,7 @@ export default class Achivements extends Component{
                             bodyStyle={{background:"linear-gradient(90deg, #fffde4 , #EFEFBB)", minHeight:"200px"}}
                             actions={[
                                 <a href={item.link}>{item.position < 3 ? item.position + this.state.posending[item.position-1]  + " Position" :item.position + this.state.posending[3]  + " Position"}</a>,
-                                <a href={item.link}>Certificate</a>,
+                                <a href={item.link}>{item.link != "#" ? "Certificate" : "-NA-"}</a>,
                                 <a href={item.link}>{item.from_date}</a>
                             ]}>
                             <Meta
