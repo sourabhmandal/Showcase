@@ -5,9 +5,6 @@
 ![preview_image](https://github.com/sourabhmandal/Showcase/blob/main/preview.gif)
 
 
-### LIVE PREVIEW => [sourabh mandal's resume](https://sourabhmandalresume.netlify.app/)
-
-
 ### FEATURES:
 * Simple ui
 * Responsive
